@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="newProject" >
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="render/semantic.min.css">
+</head>
+
+<body>
+
+    <div class="ui top sidebar">
+        <!--提示状态-->
+    </div>
+    <div class="pusher" style="margin: 0;padding: 0;">
+        <div class="ui inverted pointing menu" style="height:80px;">
+            <a class="active item">Home </a>
+            <a class="item">Messages </a>
+            <a class="item">好友 </a>
+        </div>
+
+        <div ng-view style="">
+        </div>
+    </div>
+
+    <div id="balckBoard" class="transition hidden" style="background: black;z-index: 2;
+        height: 100%;width: 100%;opacity: 0.8;
+        position: fixed;
+        top: 0;
+        overflow-y: auto;right:0;">
+
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="render/semantic.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.5.11/angular.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.5.11/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/drivate/repeatFinish.js"></script>
+    <script src="js/contro/memberController.js"></script>
+
+
+</body>
+
+</html>
