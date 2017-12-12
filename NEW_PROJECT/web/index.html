@@ -1,23 +1,63 @@
 <!DOCTYPE html>
-<html ng-app="newProject" >
+<html ng-app="newProject" ng-controller="todayController">
 
 <head>
+    
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="render/semantic.min.css">
+    
 </head>
 
 <body>
 
-    <div class="ui top sidebar">
-        <!--提示状态-->
+    <div class="ui top successMsg sidebar" style="background:green;text-align:center">
+       ok
+    </div>
+    <div class="ui top errorMsg sidebar" style="background:red;text-align:center">
+       error
     </div>
     <div class="pusher" style="margin: 0;padding: 0;">
-        <div class="ui inverted pointing menu" style="height:80px;">
-            <a class="active item">Home </a>
-            <a class="item">Messages </a>
-            <a class="item">好友 </a>
+        <!--<style>
+        asdasd
+        </style>-->
+        <div class="ui attached stackable inverted menu">
+            <div class="ui container">
+                <!--<a class="orange item active">
+                    <i class="home icon"></i> 今日
+                </a>
+                <a class="item" ng-click="goto">
+                    <i class="grid layout icon"></i> 日历
+                </a>
+                <a class="item">
+                    <i class="mail icon"></i> 消息
+                </a>-->
+                <a class="orange item {{menu.active?'active':''}}" ng-click="menuServer.selectMenu(menu.id)" ng-repeat="menu in menuServer.getMenu()">
+                     <i class="home icon "></i> {{menu.title}}
+                </a>
+                <div class="ui simple dropdown item">
+                    More
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item"><i class="edit icon"></i> Edit Profile</a>
+                        <a class="item"><i class="globe icon"></i> Choose Language</a>
+                        <a class="item"><i class="settings icon"></i> Account Settings</a>
+                    </div>
+                </div>
+                <div class="right item">
+                    <div class="ui input">
+                        <input type="text" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
         </div>
+       <!-- <div class="ui inverted segment">
 
+            <div class="ui large secondary inverted pointing menu">
+                <a class="item">首页 </a>
+                <a class="item">时间轴 </a>
+                <a class="item active">消息</a>
+            </div>
+        </div>-->
         <div ng-view style="">
         </div>
     </div>
@@ -36,8 +76,11 @@
     <script src="https://cdn.bootcss.com/angular.js/1.5.11/angular.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.5.11/angular-route.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/service/menuServer.js"></script>
     <script src="js/drivate/repeatFinish.js"></script>
     <script src="js/contro/memberController.js"></script>
+    <script src="js/contro/todayController.js"></script>
+    
 
 
 </body>

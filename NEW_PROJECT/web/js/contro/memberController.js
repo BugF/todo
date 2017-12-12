@@ -1,14 +1,11 @@
 (function (angular) {
     'use strict';
     var appConfig = angular.module('newProject');
-    appConfig.controller('memberController', ['$scope', function ($scope) {
-        $scope.rightShow = function () {
-
-            $('.ui.sidebar')
-                .sidebar('setting', 'transition', 'overlay')
-
-            .sidebar('toggle');
-        }
+    appConfig.controller('memberController', ['$scope','menuManager', function ($scope,menuManager) {
+        $scope.menuServer=menuManager;
+        $scope.menuServer.showActive('menu_calendar');
+        console.info(JSON.stringify($scope.menuServer));
+       
         $scope.closeDiv=function(){
             $('#balckBoard')
                 .transition('fly right');
@@ -25,8 +22,9 @@
                 .transition('fly left');
         }
         $scope.nowDate=new Date();
+        $scope.showDate=new Date();
 
-        init($scope.nowDate);
+        init($scope.showDate);
 
     
         
@@ -59,7 +57,7 @@
         }
         $scope.lastMonth=function(){
             $('.seven.column.row.transition.hidden').transition('fade');
-            var date=new Date($scope.nowDate);
+            var date=new Date($scope.showDate);
             var month=date.getMonth()+1;
             var year=date.getFullYear();
             if(month>1){
@@ -68,12 +66,12 @@
                 year=year-1;
                 month=12;
             }
-            $scope.nowDate=new Date(year+"-"+month+"-1");
+            $scope.showDate=new Date(year+"-"+month+"-1");
             init(year+"-"+month+"-1")
         }
         $scope.nextMonth=function(){
             $('.seven.column.row.transition.hidden').transition('fade');
-            var date=new Date($scope.nowDate);
+            var date=new Date($scope.showDate);
             var month=date.getMonth()+1;
             var year=date.getFullYear();
             if(month<12){
@@ -82,7 +80,7 @@
                 year=year+1;
                 month=1;
             }
-            $scope.nowDate=new Date(year+"-"+month+"-1");
+            $scope.showDate=new Date(year+"-"+month+"-1");
             init(year+"-"+month+"-1");
         }
 

@@ -1,0 +1,24 @@
+<div style="padding:20px 50px;">
+    <!--<div class="ui one column grid">-->
+        <div class="column" style="padding:5px 0;" ng-repeat="data in todayData" id="{{data.id}}">
+            <div class="ui fluid link card">
+                <div class="content" style="padding-left:40px;padding-bottom:30px;">
+                    <a class="ui red right ribbon label">紧急</a>
+                    <span>23:22:54</span>
+                    <p>洒洒水</p>
+                    <p>洒洒水</p>
+                    <p>洒洒水</p>
+                    <p>洒洒水</p>
+                    <div class="ui yellow bottom right attached label">OVER-----></div>
+                    <div class="ui yellow bottom left attached label" ng-click="removeItem(data.id)">REMOVE</div>
+                </div>
+            </div>
+        </div>
+       
+
+    <!--</div>-->
+    <div style="position:fixed;background:green;height:100px;width:35px;left:0px;top:40%">
+        排序或锚点 按钮
+    </div>
+
+</div>
