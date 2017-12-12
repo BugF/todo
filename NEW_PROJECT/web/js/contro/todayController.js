@@ -17,13 +17,23 @@
             }
         ];
         $scope.removeItem = function (id) {
-            $('#' + id).transition('fade down');
+            // $('#' + id).transition('fade down');
             $('.ui.successMsg.sidebar')
                 .sidebar('setting', 'transition', 'overlay')
-
-            .sidebar('toggle')
-            .sidebar('toggle');
+                .sidebar({
+                    onShow: function () {
+                        setTimeout(function(){$('.ui.successMsg.sidebar').sidebar('hide')},300)
+                        
+                    },
+                    onChange: function () {
+                      //  alert('sss')
+                    },
+                    onHidden: function () {
+                        $('#' + id).transition('fade right');
+                    }
+                }).sidebar('show');
         }
+        
         $scope.rightShow = function () {
 
             $('.ui.sucessMsg.sidebar')
