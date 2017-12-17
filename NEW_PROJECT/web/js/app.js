@@ -10,8 +10,8 @@
         $routeProvider
             .when('/menu_calendar', {
                 title:'首页',
-                templateUrl: './html/member.html',
-                controller:'memberController'
+                templateUrl: './html/calendar.html',
+                controller:'calendarController'
             })
             .when('/menu_today', {
                 title:'今日',

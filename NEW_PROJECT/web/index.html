@@ -31,6 +31,9 @@
                 <a class="item">
                     <i class="mail icon"></i> 消息
                 </a>-->
+                <a class="item" ng-click="addTodoModal.showDiv()">
+                     <i class="home icon "></i> NEW
+                </a>
                 <a class="orange item {{menu.active?'active':''}}" ng-click="menuServer.selectMenu(menu.id)" ng-repeat="menu in menuServer.getMenu()">
                      <i class="home icon "></i> {{menu.title}}
                 </a>
@@ -60,6 +63,8 @@
         </div>-->
         <div ng-view style="">
         </div>
+        <add-todo-wondow conf="addTodoModal"></add-todo-wondow>
+    
     </div>
 
     <div id="balckBoard" class="transition hidden" style="background: black;z-index: 2;
@@ -78,9 +83,9 @@
     <script src="js/app.js"></script>
     <script src="js/service/menuServer.js"></script>
     <script src="js/drivate/repeatFinish.js"></script>
-    <script src="js/contro/memberController.js"></script>
+    <script src="js/contro/calendarController.js"></script>
     <script src="js/contro/todayController.js"></script>
-    
+    <script src="js/drivate/add.todo.window.js"></script>
 
 
 </body>

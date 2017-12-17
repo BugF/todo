@@ -1,24 +1,57 @@
 <div style="padding:20px 50px;">
-    <!--<div class="ui one column grid">-->
-        <div class="column" style="padding:5px 0;" ng-repeat="data in todayData" id="{{data.id}}">
-            <div class="ui fluid link card">
-                <div class="content" style="padding-left:40px;padding-bottom:30px;">
-                    <a class="ui red right ribbon label">紧急</a>
-                    <span>23:22:54</span>
-                    <p>洒洒水</p>
-                    <p>洒洒水</p>
-                    <p>洒洒水</p>
-                    <p>洒洒水</p>
-                    <div class="ui yellow bottom right attached label">OVER-----></div>
-                    <div class="ui yellow bottom left attached label" ng-click="removeItem(data.id)">REMOVE</div>
-                </div>
+
+    <!--<div class="column" style="padding:5px 0;" ng-repeat="data in todayData" id="{{data.id}}">
+        <div class="ui fluid link card">
+            <div class="content" style="padding-left:40px;padding-bottom:30px;">
+                <a class="ui red right ribbon label">紧急</a>
+                <span>23:22:54</span>
+                <p>洒洒水</p>
+                <p>洒洒水</p>
+                <div class="ui yellow bottom right attached label" ng-click="finishItem(data.id)">OVER</div>
+                <div class="ui yellow bottom left attached label" ng-click="removeItem(data.id)">REMOVE</div>
             </div>
         </div>
-       
+    </div>-->
+    <style>
+        .ui.shape{
+            width: 100%
+        }
+        .ui.shape .sides{
+            width: 100%
+        }
+        .ui.shape .sides .side{
+            width: 100%
+        }
 
-    <!--</div>-->
+    </style>
+    <div class="ui shape" style="width: 100%">
+        <div class="sides" style="width: 100%">
+            <div class="active side" style="width: 100%">
+                <div class="column" style="padding:5px 0;" ng-repeat="data in todayData" id="{{data.id}}">
+                    <div class="ui fluid link card">
+                        <div class="content" style="padding-left:40px;padding-bottom:30px;">
+                            <a class="ui red right ribbon label">紧急</a>
+                            <span>23:22:54</span>
+                            <p>洒洒水</p>
+                            <p>洒洒水</p>
+                            <div class="ui yellow bottom right attached label" ng-click="finishItem(data.id)">OVER</div>
+                            <div class="ui yellow bottom left attached label" ng-click="removeItem(data.id)">REMOVE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side" style="width: 100%">
+                阿斯顿
+            </div>
+            <div class="side" style="width: 100%">This is the last side</div>
+        </div>
+    </div>
+
     <div style="position:fixed;background:green;height:100px;width:35px;left:0px;top:40%">
         排序或锚点 按钮
+    </div>
+    <div style="position:fixed;background:green;height:100px;width:35px;right:0px;top:40%">
+        <a class="ui label" ng-click="gotoTransh()">回收站</a>
     </div>
 
 </div>

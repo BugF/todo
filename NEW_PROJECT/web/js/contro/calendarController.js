@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
     var appConfig = angular.module('newProject');
-    appConfig.controller('memberController', ['$scope','menuManager', function ($scope,menuManager) {
+    appConfig.controller('calendarController', ['$scope','menuManager', function ($scope,menuManager) {
         $scope.menuServer=menuManager;
         $scope.menuServer.showActive('menu_calendar');
         console.info(JSON.stringify($scope.menuServer));
