@@ -16,7 +16,7 @@
                 id: 'dd'
             }
         ];
-        
+        $scope.addTodoModal={};
         $scope.removeItem = function (id) {
             // $('#' + id).transition('fade down');
             $('.ui.successMsg.sidebar')
