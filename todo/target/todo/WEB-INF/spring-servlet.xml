@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+    <!-- <mvc:default-servlet-handler/>-->
+
+    <websocket:handlers>
+        <websocket:mapping path="/todo/websocket" handler="mywebsocket"/>
+        <websocket:handshake-interceptors>
+            <bean class="com.todo.socket.MyHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+        <websocket:sockjs/>
+    </websocket:handlers>
+    <bean id="mywebsocket" class="com.todo.socket.MyWebSocket"></bean>
+
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.todo.dao"/>
+    <context:component-scan base-package="com.todo.service"/>
+    <context:component-scan base-package="com.todo.controller"/>
+
+    <mvc:annotation-driven/>
+
+    <bean id="configurer" class="com.todo.util.ConfigUtil">
+        <property name="locations"> <!-- PropertyPlaceholderConfigurer类中有个locations属性，接收的是一个数组，即我们可以在下面配好多个properties文件 -->
+            <array>
+              <!--  <value>file:G:\todo_conf\server.properties</value>-->
+                <value>classpath:server.properties</value>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 完成请求和注解POJO的映射 -->
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://localhost:3306/todo?useUnicode=true&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;useSSL=false
+            </value>
+        </property>
+        <property name="username">
+            <value>root</value>
+        </property>
+        <property name="password">
+            <value>passw0rd</value>
+        </property>
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="mapperLocations" value="classpath:com/todo/dao/*.xml"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+
+        <property name="basePackage" value="com.todo.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+
+
+</beans>

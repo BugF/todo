@@ -17,6 +17,10 @@
                 title:'今日',
                 templateUrl: './html/today.html',
                 controller:'todayController'
+            }).when('/menu_team', {
+                title:'今日',
+                templateUrl: './html/team.html',
+                controller:'teamController'
             })
             .otherwise({
                 redirectTo: '/menu_today'

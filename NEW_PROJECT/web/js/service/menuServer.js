@@ -17,6 +17,10 @@
                         id: 'menu_message',
                         title: 'message',
                         active: false
+                }, {
+                        id: 'menu_team',
+                        title: '团队',
+                        active: false
                 }
             ]
         }

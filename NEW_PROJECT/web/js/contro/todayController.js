@@ -16,6 +16,9 @@
                 id: 'dd'
             }
         ];
+        $scope.A1={
+            name:'a1'
+        }
         $scope.addTodoModal={};
         $scope.removeItem = function (id) {
             // $('#' + id).transition('fade down');

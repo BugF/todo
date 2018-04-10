@@ -4,12 +4,18 @@ import java.sql.Timestamp;
 
 /**
  * Created by fulixiu on 2017-12-20.
+ *
+ * 代办的任务实体类
+ *
+ *
  */
 public class Task {
     private String id;
     private String title;
     private String note;
     private String creator;
+    private Boolean beOver;
+    private Boolean beDelete;
     private Timestamp createTime;
     private Timestamp alarmTime;
     public String getId() {
@@ -34,6 +40,22 @@ public class Task {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Boolean getBeOver() {
+        return beOver;
+    }
+
+    public void setBeOver(Boolean beOver) {
+        this.beOver = beOver;
+    }
+
+    public Boolean getBeDelete() {
+        return beDelete;
+    }
+
+    public void setBeDelete(Boolean beDelete) {
+        this.beDelete = beDelete;
     }
 
     public String getCreator() {

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="newProject" ng-controller="todayController">
+<html ng-app="newProject" ng-controller="mainController">
 
 <head>
-
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="render/semantic.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="render/timePicker/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" type="text/css" href="css/simditor.css" />
 </head>
 
 <body>
@@ -17,82 +17,66 @@
     <div class="ui top errorMsg sidebar" style="background:red;text-align:center">
         error
     </div>
-    <div class="pusher" style="margin: 0;padding: 0;">
-        <!--<style>
-        asdasd
-        </style>-->
-        <div class="ui attached stackable inverted menu">
-            <div class="ui container">
-                <!--<a class="orange item active">
-                    <i class="home icon"></i> 今日
-                </a>
-                <a class="item" ng-click="goto">
-                    <i class="grid layout icon"></i> 日历
-                </a>
-                <a class="item">
-                    <i class="mail icon"></i> 消息
-                </a>-->
-                <a class="item" ng-click="addTodoModal.showDiv()">
-                     <i class="home icon "></i> NEW
-                </a>
-                <a class="orange item {{menu.active?'active':''}}" ng-click="menuServer.selectMenu(menu.id)" ng-repeat="menu in menuServer.getMenu()">
-                     <i class="home icon "></i> {{menu.title}}
-                </a>
-                <div class="ui simple dropdown item">
-                    More
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item"><i class="edit icon"></i> Edit Profile</a>
-                        <a class="item"><i class="globe icon"></i> Choose Language</a>
-                        <a class="item"><i class="settings icon"></i> Account Settings</a>
-                    </div>
-                </div>
-                <div class="right item">
-                    <div class="ui input">
-                        <input type="text" placeholder="Search...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="ui inverted segment">
 
-            <div class="ui large secondary inverted pointing menu">
-                <a class="item">首页 </a>
-                <a class="item">时间轴 </a>
-                <a class="item active">消息</a>
-            </div>
-        </div>-->
-        <div ng-view style="">
-        </div>
-
-
+    <div class="ui left vertical menu sidebar big twoMenu" style="width: 200px;background-color: darkgrey;padding-left: 70px">
+        <a class="item">
+      1
+        </a>
+        <a class="item">
+      2
+        </a>
+        <a class="item">
+      3
+        </a>
     </div>
-    <add-todo-window conf="addTodoModal"></add-todo-window>
-    <div id="balckBoard" class="transition hidden" style="background: black;z-index: 2;
-        height: 100%;width: 100%;opacity: 0.8;
-        position: fixed;
-        top: 0;
-        overflow-y: auto;right:0;">
+    <div class="ui inverted labeled icon left inline vertical sidebar firstMenu menu">
+        <a class="item">
 
+            <i class="home icon"></i>
+
+        </a>
+        <a class="item">
+    <i class="block  layout icon"></i>
+    
+  </a>
+        <a class="item">
+    <i class="smile  icon"></i>
+    
+  </a>
+    </div>
+    <div class="pusher" style="padding: 10px 10px">
+        asdasdASDASDSADASDASDSADASDASDSADAS
     </div>
 
 
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/module.js"></script>
+    <script type="text/javascript" src="js/hotkeys.js"></script>
+    <script type="text/javascript" src="js/uploader.js"></script>
+    <script type="text/javascript" src="js/simditor.js"></script>
+    <script type="text/javascript" src="js/simditor-mark.js"></script>
+    <script type="text/javascript" src="js/simditor-autosave.js"></script>
+
     <script src="render/semantic.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.5.11/angular.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.5.11/angular-route.js"></script>
-     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="js/app.js"></script>
     <script src="js/service/menuServer.js"></script>
     <script src="js/drivate/repeatFinish.js"></script>
-     <script src="js/drivate/add.todo.window.js"></script>
+    <script src="js/drivate/add.todo.window.js"></script>
+    <script src="js/drivate/a1.js"></script>
+    <script src="js/drivate/a2.js"></script>
+
+
+    <script src="js/contro/mainController.js"></script>
     <script src="js/contro/calendarController.js"></script>
     <script src="js/contro/todayController.js"></script>
-   
+    <script src="js/contro/teamController.js"></script>
+
     <script src="render/timePicker/jquery-ui-timepicker-addon.js"></script>
-     <script src="render/timePicker/i18n/jquery-ui-timepicker-zh-CN.js"></script>
-
-
+    <script src="render/timePicker/i18n/jquery-ui-timepicker-zh-CN.js"></script>
 
 </body>
 

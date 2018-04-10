@@ -24,9 +24,13 @@
         }
 
     </style>
+    
     <div class="ui shape" style="width: 100%">
         <div class="sides" style="width: 100%">
             <div class="active side" style="width: 100%">
+                <div style="padding: 5px;" ng-click="gotoTransh()">dd</div>
+                <div class="ui label" ng-click="gotoTransh()">dd</div>
+                <div class="ui button" ng-click="gotoTransh()">dd</div>
                 <div class="column" style="padding:5px 0;" ng-repeat="data in todayData" id="{{data.id}}">
                     <div class="ui fluid link card">
                         <div class="content" style="padding-left:40px;padding-bottom:30px;">
@@ -41,9 +45,12 @@
                 </div>
             </div>
             <div class="side" style="width: 100%">
-                阿斯顿
+                <div style="padding: 5px;" ng-click="gotoTransh()">dd</div>
+                <div class="ui button" ng-click="gotoTransh()">dd</div>
             </div>
-            <div class="side" style="width: 100%">This is the last side</div>
+            <div class="side" style="width: 100%"><div style="padding: 5px;" ng-click="gotoTransh()">dd</div>
+                <div class="ui label" ng-click="gotoTransh()">dd</div>
+                <div class="ui button" ng-click="gotoTransh()">dd</div></div>
         </div>
     </div>
 
@@ -53,5 +60,6 @@
     <div style="position:fixed;background:green;height:100px;width:35px;right:0px;top:40%">
         <a class="ui label" ng-click="gotoTransh()">回收站</a>
     </div>
-
+    <a1 conf="A1"></a1>
+    
 </div>
