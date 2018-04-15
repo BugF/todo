@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 
 @Controller
 public class WX_Link {
@@ -55,9 +56,9 @@ public class WX_Link {
     @RequestMapping(value="wx/link" ,method = RequestMethod.POST)
     public @ResponseBody
     String post(HttpServletRequest request, HttpServletResponse response ) throws IOException, DocumentException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         WXTocken.getTocken();
-
-
        // Document document= DocumentHelper.parseText(xmlStr.toString());
         SAXReader reader = new SAXReader();
         Document document;
@@ -72,10 +73,25 @@ public class WX_Link {
             // TODO Auto-generated catch block
             e.printStackTrace();
             System.out.println("数据解析错误");
-
         }
 
-
+        if(message.getMsgType().equals("text")){
+            WX_Message toMessage=new WX_Message();
+            toMessage.setCreateTime(new Date().getTime());
+            toMessage.setMsgType("text");
+            toMessage.setFromUserName(message.getToUserName());
+            toMessage.setToUserName(message.getFromUserName());
+            if(message.getContent().indexOf("验证码")>-1){
+                toMessage.setContent("还未添加此服务。。。");
+            }else if(message.getContent().indexOf("英文")>-1)
+                toMessage.setContent("what?");
+                else{
+                toMessage.setContent("你说啥？");
+            }
+            String toMe=XmlUtil.getDocument(toMessage).asXML();
+            int a=toMe.indexOf("\n");
+            return new String(toMe.substring(a+1).replaceAll("WX_Message","xml").getBytes(),"utf-8");
+        }
         return null;
     }
 }

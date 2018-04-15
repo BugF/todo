@@ -1,8 +1,12 @@
 package com.todo.util.wx;
 
+import com.todo.controller.param.WX_Message;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Date;
 
 public class XmlUtil {
@@ -57,5 +61,47 @@ public class XmlUtil {
             }
         }
         return obj;
+    }
+    public static Document getDocument(Object b) {
+        Document document = DocumentHelper.createDocument();
+        try {
+// 创建根节点元素
+            Element root = document.addElement(b.getClass().getSimpleName());
+            Field[] field = b.getClass().getDeclaredFields(); // 获取实体类b的所有属性，返回Field数组
+            for (int j = 0; j < field.length; j++) { // 遍历所有有属性
+                String name = field[j].getName(); // 获取属属性的名字
+                if (!name.equals("serialVersionUID")) {//去除串行化序列属性
+                    name = name.substring(0, 1).toUpperCase()
+                            + name.substring(1); // 将属性的首字符大写，方便构造get，set方法
+                    Method m = b.getClass().getMethod("get" + name);
+// System.out.println("属性get方法返回值类型:" + m.getReturnType());
+                    Object propertievalue =  m.invoke(b);// 获取属性值
+                    Element propertie = root.addElement(name);
+                    propertie.setText(propertievalue+"");
+                }
+            }
+
+
+        } catch (Exception e) {
+// TODO Auto-generated catch block
+            e.printStackTrace();
+
+
+        }
+        return document;
+    }
+    public static void main(String[] args) {
+        WX_Message toMessage=new WX_Message();
+        toMessage.setCreateTime(new Date().getTime());
+        toMessage.setMsgType("text");
+        toMessage.setFromUserName("asd");
+        toMessage.setToUserName("asd");
+
+        toMessage.setContent("还未添加此服务。。。");
+
+        String data=XmlUtil.getDocument(toMessage).asXML();
+        System.out.println(data.indexOf("\n"));
+
+        System.out.println( XmlUtil.getDocument(toMessage).asXML());
     }
 }
