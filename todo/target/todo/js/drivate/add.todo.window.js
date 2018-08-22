@@ -54,7 +54,7 @@
                         else
                             $('#newTodoTime').datetimepicker('setDate', '');
 
-                        $('.ui.modal')
+                        $('#_new')
                             .modal({
                                 closable: false,
                                 onDeny: function () {

@@ -8,7 +8,7 @@
         $scope.menuServer.showActive('menu_today');
         console.info(JSON.stringify($scope.menuServer));
         $scope.todayData = [];
-      //  listTask();
+        listTask();
         function listTask() {
             taskService.listByUser('flx').then(
                 function (value) {  }
