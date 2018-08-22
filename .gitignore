@@ -4,3 +4,4 @@ todo/target/todo.war
 todo/target/todo/WEB-INF/classes/com/todo/controller/WX_Link.class
 *.class
 *.xml
+*.class

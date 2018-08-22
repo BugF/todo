@@ -1,5 +1,6 @@
 package com.todo.socket;
 
+import com.google.gson.Gson;
 import com.todo.controller.LoginParam;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -8,6 +9,8 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class MyWebSocket extends TextWebSocketHandler {
@@ -37,8 +40,12 @@ public class MyWebSocket extends TextWebSocketHandler {
 
     public void handleMessage(WebSocketSession session,WebSocketMessage<?> message){
         System.out.println("text message: "+ session.getId()+ "-"+ message.getPayload());
+        Map<String,Object> obj=new HashMap<>();
+        obj.put("tocken",session.getId());
+        obj.put("type","onLogin");
         try {
-            session.sendMessage(new TextMessage(session.getId()));
+
+            session.sendMessage(new TextMessage(new Gson().toJson(obj)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,6 +72,20 @@ public class MyWebSocket extends TextWebSocketHandler {
             }
         }
     }
+    public void sendMessage(Map loginParam){
+        for (WebSocketSession user : set) {
+            if (user.getId().equals(loginParam.get("tocken"))) {
+                try {
+                    if (user.isOpen()) {
+                        user.sendMessage(new TextMessage(new Gson().toJson(loginParam)));
+                    }
+                } catch (IOException e) {
+
+                }
+            }
+        }
+    }
+
 
     public static int getOnlineCount() {
         return count;

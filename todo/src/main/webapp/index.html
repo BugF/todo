@@ -2,7 +2,7 @@
 <html ng-app="newProject" ng-controller="mainController">
 
 <head>
-
+    <title>首页</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="render/semantic.min.css">
     <link rel="stylesheet" href="render/jauery-ui.min.css">
@@ -43,12 +43,14 @@
                 </div>
             </div>
         </div>
-        <div class="ui segment" ng-show="false">
+        <div class="ui segment" ng-show="true">
+            <!--{{ userName}}-->
             <textarea ng-model="message">
 
             </textarea>
-            <div class="ui button" ng-click="doSend()">ok</div>
-            <div id="QEM" style="width: 200px;height: 200px;"> </div>
+            <!--<div class="ui button" ng-click="doSend()">ok</div>-->
+            <div class="ui button" ng-click="login()">扫码登录</div>
+            <!--<div id="QEM" style="width: 200px;height: 200px;"> </div>-->
 
         </div>
 
@@ -57,6 +59,7 @@
 
 
     </div>
+
     <add-todo-window conf="addTodoModal"></add-todo-window>
     <div id="balckBoard" class="transition hidden" style="background: black;z-index: 2;
         height: 100%;width: 100%;opacity: 0.8;
@@ -94,6 +97,16 @@
 
     <script src="render/timePicker/jquery-ui-timepicker-addon.js"></script>
     <script src="render/timePicker/i18n/jquery-ui-timepicker-zh-CN.js"></script>
+    <div class="ui mini centered basic modal" style="width: 360px;display: inline" id="QEM_Modal">
+        <div class="ui img centered header" align="center">
+            <div id="QEM" style="width: 360px;height: 360px;text-align: center" align="center"> </div>
+        </div>
+        <div class="content" style="text-align: center;">
+            <div>{{status}}</div>
+        </div>
+        <div class="actions">
+        </div>
+    </div>
 </body>
 
 </html>
