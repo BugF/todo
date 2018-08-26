@@ -11,40 +11,59 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class MyWebSocket extends TextWebSocketHandler {
     // 线上人数
     private static int count;
     private static CopyOnWriteArraySet<WebSocketSession> set = new CopyOnWriteArraySet();
+    private static ConcurrentHashMap<String,WebSocketSession> map=new ConcurrentHashMap<>();
+
     private WebSocketSession session;
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
         this.session = session;
-        try{
-            set.add(this.session);
-        }catch(Exception e) {
-            e.printStackTrace();
+        if(null==this.session.getAttributes().get("account")||
+                this.session.getAttributes().get("account").toString().isEmpty()){
+            map.put(this.session.getId(),this.session);
+        }else {
+            map.put(this.session.getAttributes().get("account").toString(),this.session);
         }
-        this.addOnlineCount();
-        System.out.println("目前连接人数：" + getOnlineCount());
+        addOnlineCount();
     }
 
     public void afterConnectionClosed(WebSocketSession session,CloseStatus closeStatus) {
         this.session = session;
-        set.remove(this.session);
+        if(0==this.session.getAttributes().size()||
+                null==this.session.getAttributes().get("account")||
+                this.session.getAttributes().get("account").toString().isEmpty()){
+            map.remove(this.session.getId());
+        }else {
+            map.remove(this.session.getAttributes().get("account").toString());
+        }
+//        set.remove(this.session);
+
         subOnlineCount();
         System.out.println("目前连接人数：" + getOnlineCount());
     }
 
     public void handleMessage(WebSocketSession session,WebSocketMessage<?> message){
+        this.session = session;
         System.out.println("text message: "+ session.getId()+ "-"+ message.getPayload());
         Map<String,Object> obj=new HashMap<>();
-        obj.put("tocken",session.getId());
+        if(null==this.session.getAttributes().get("account")||
+                this.session.getAttributes().get("account").toString().isEmpty()){
+//            map.put(this.session.getId(),this.session);
+            obj.put("tocken",this.session.getId());
+        }else {
+            obj.put("tocken",this.session.getAttributes().get("account").toString());
+            //map.put(this.session.getAttributes().get("account").toString(),this.session);
+        }
+      //  obj.put("tocken",session.getId());
         obj.put("type","onLogin");
         try {
-
             session.sendMessage(new TextMessage(new Gson().toJson(obj)));
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,7 +80,7 @@ public class MyWebSocket extends TextWebSocketHandler {
     }
     public void sendMessage(LoginParam loginParam){
         for (WebSocketSession user : set) {
-            if (user.getId().equals(loginParam.getTocken())) {
+            if (user.getAttributes().get("account").toString().equals(loginParam.getTocken())) {
                 try {
                     if (user.isOpen()) {
                         user.sendMessage(new TextMessage(loginParam.getAccount()));
@@ -73,17 +92,34 @@ public class MyWebSocket extends TextWebSocketHandler {
         }
     }
     public void sendMessage(Map loginParam){
-        for (WebSocketSession user : set) {
-            if (user.getId().equals(loginParam.get("tocken"))) {
-                try {
-                    if (user.isOpen()) {
-                        user.sendMessage(new TextMessage(new Gson().toJson(loginParam)));
-                    }
-                } catch (IOException e) {
-
-                }
+        WebSocketSession user=map.get(loginParam.get("tocken"));
+        if (user.isOpen()) {
+            try {
+                user.sendMessage(new TextMessage(new Gson().toJson(loginParam)));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+//            if (null!=user.getAttributes().get("SESSION_USERNAME")
+//                    &&user.getAttributes().get("SESSION_USERNAME")
+//                    .toString().equals(loginParam.get("tocken"))) {
+//                try {
+//                    if (user.isOpen()) {
+//                        user.sendMessage(new TextMessage(new Gson().toJson(loginParam)));
+//                    }
+//                } catch (IOException e) {
+//
+//                }
+//            }else if(user.getId().equals(loginParam.get("tocken"))){
+//                try {
+//                    if (user.isOpen()) {
+//                        user.sendMessage(new TextMessage(new Gson().toJson(loginParam)));
+//                    }
+//                } catch (IOException e) {
+//
+//                }
+//            }
+
     }
 
 

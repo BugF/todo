@@ -1,0 +1,33 @@
+<div style="padding:0">
+
+    <style>
+        .ui.shape{
+            width: 100%
+        }
+        .ui.shape .sides{
+            width: 100%
+        }
+        .ui.shape .sides .side{
+            width: 100%
+        }
+
+    </style>
+    <div class="myHead" style="background:forestgreen ;height:150px;line-height:150px;">
+       <div style="position: absolute;bottom: 10px;margin:0 10px;width: 100%">
+           <!--<div class="ui huge icon input">
+               <input type="text" ng-model="_thisList.title">
+               <i class="search icon"></i>
+           </div>-->
+           <div class="ui huge fluid input" style="background-color:transparent">
+               <input ng-dblclick="db()" ng-show="!canUpdate"type="text" style="background-color:transparent;border: 0" readonly="true" ng-model="_thisList.title">
+               <input id="_listTitle" ng-show="canUpdate"type="text" ng-blur="onBlur()" style="background-color: rgba(223, 234, 227, 0.2);" ng-model="_thisList.title">
+           </div>
+       </div>
+    </div>
+    <div class="myBody" style="background: saddlebrown;top:150px;
+            bottom:0px;">
+
+    </div>
+
+    
+</div>

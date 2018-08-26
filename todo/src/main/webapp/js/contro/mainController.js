@@ -2,22 +2,81 @@
     'use strict';
     var appConfig = angular.module('newProject');
     appConfig.controller('mainController',
-        ['$scope', 'menuManager','taskService',
-            function ($scope, menuManager,taskService) {
+        ['$scope', 'menuManager','taskService','listService','$location',
+            function ($scope, menuManager,taskService,listService,$location) {
                 $scope.menuServer = menuManager;
                 $scope.status = "扫描上方二维码";
+                var titles=[];
+                // function addTitle(title) {
+                //     titles.push()
+                // }
+                function getTitle(){
+                    var i=0;
+                    var titlePro="新建清单";
+                    var t=titlePro;
+                    while($.inArray(t,$scope.menuServer.listMenuTitleArr)>=0){
+                        i++;
+                        t=titlePro+i;
+                    }
+                    return t;
+                }
                 console.info(JSON.stringify($scope.menuServer));
                 var qrcode = new QRCode(
                     document.getElementById("QEM"), {
                     width : 315,//设置宽高
                     height : 315
-                });
+                });init();
                 var websocket = null;
-                websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket");
-                websocket.onopen = onOpen;
-                websocket.onmessage = onMessage;
-                websocket.onerror = onError;
-                websocket.onclose = onClose;
+                function init() {
+                    taskService.loginUser().then(
+                        function (obj) {
+                            if(null==obj.account){
+                                websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket");
+                            }else{
+                                websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket?account="+obj.account);
+                            }
+                            websocket.onopen = onOpen;
+                            websocket.onmessage = onMessage;
+                            websocket.onerror = onError;
+                            websocket.onclose = onClose;
+                        }
+                    )
+                }
+
+              //  websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket?ppp=123");
+
+                $scope.addList=function(){
+                    var title=getTitle();
+                    listService.create(title).then(
+                        function (data) {
+                            if(data.status=='true'){
+                                $scope.menuServer.listMenuTitleArr.push(data.datas.title);
+                                $scope.menuServer.listMenuMap[data.datas.id]=data.datas;
+                                $scope.menuServer.listMenuIdArr.push(data.datas.id);
+
+                            }
+                        }
+                    )
+                }
+                $scope.goToList=function(id){
+                    $location.path('/list/' + id)
+                }
+                listAllLIST();
+                $scope._LISTS=[];
+                function listAllLIST() {
+                    $scope._LISTS=[];
+                    listService.listAll().then(
+                        function (data) {
+                            if(data.status=='true'){
+                                $scope._LISTS=data.datas;
+                                $.each(data.datas,function (i,obj) {
+                                    titles.push(obj.title)
+                                })
+                                console.info(JSON.stringify(data.datas));
+                            }
+                        }
+                    )
+                }
 
                 function onOpen(openEvt) {
                     console.info(JSON.stringify(openEvt));
@@ -30,6 +89,7 @@
                         //$('#QEM').empty();
                         qrcode.clear();
 
+                        console.info("http://"+document.location.host+"/todo/api/todo/login?tocken="+obj.tocken);
                         qrcode.makeCode("http://"+document.location.host+"/todo/api/todo/login?tocken="+obj.tocken)
                          // new QRCode(document.getElementById("QEM"),
                          //     "http://"+document.location.host+"/todo/api/todo/login?tocken="+obj.tocken);
@@ -45,14 +105,18 @@
                         $scope.userName=obj.account;
                         $scope.status="正在登录";
                         $scope.$apply();
+
                         setTimeout(function(){
+                           //  websocket.onclose();
+                           // websocket = new
+                           //   SockJS("http://"+document.location.host+"/todo/api/websocket?account="+obj.account);
                             $('#QEM_Modal').modal({
                                 closable:false
-                            }).modal('hide')
-                        }, 3000);
+                            }).modal('hide');
+                            window.location.reload()
+                        }, 1000);
 
                     }
-
                 }
                 function onError(openEvt) {
                     console.info(JSON.stringify(openEvt));

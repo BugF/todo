@@ -6,3 +6,4 @@ todo/target/todo/WEB-INF/classes/com/todo/controller/WX_Link.class
 *.xml
 *.class
 todo/.idea/workspace.xml
+todo/target/todo/WEB-INF/classes/com/todo/socket/MyHandshakeInterceptor.class

@@ -11,22 +11,21 @@ import java.util.Map;
 
 public class MyHandshakeInterceptor extends HttpSessionHandshakeInterceptor {
     @Override
-    public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
+    public boolean beforeHandshake(ServerHttpRequest request,
+                                   ServerHttpResponse response,
+                                   WebSocketHandler wsHandler,
                                    Map<String, Object> attributes) throws Exception {
         // TODO Auto-generated method stub
         System.out.println("Before Handshake");
         if (request instanceof ServletServerHttpRequest) {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
-            HttpSession session = servletRequest.getServletRequest().getSession(false);
-            if (session != null) {
-                System.out.println("Before   ");
-                //使用userName区分WebSocketHandler，以便定向发送消息
-                String userName = (String) session.getAttribute("SESSION_USERNAME");
-                if (userName==null) {
-                    userName="default-system";
-                }
-                attributes.put("WEBSOCKET_USERNAME",userName);
-               // session.setAttribute(WEBSOCKET_USERNAME);
+            String account=servletRequest.getServletRequest().getParameter("account");
+            System.out.println("account="+account);
+           // HttpSession session = servletRequest.getServletRequest().getSession(false);
+            HttpSession session2 = servletRequest.getServletRequest().getSession();
+            if (account != null) {
+                attributes.put("account",account);
+                session2.setAttribute("account",account);
             }
         }
         return super.beforeHandshake(request, response, wsHandler, attributes);

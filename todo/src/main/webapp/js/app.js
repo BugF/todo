@@ -17,6 +17,14 @@
                 title:'今日',
                 templateUrl: './html/today.html',
                 controller:'todayController'
+            }).when('/list/:id', {
+                title:'列表',
+                templateUrl: './html/list.html',
+                controller:'listController'
+            }) .when('/menu_all', {
+                title:'全部',
+                templateUrl: './html/all.html',
+                controller:'allController'
             })
             .otherwise({
                 redirectTo: '/menu_today'

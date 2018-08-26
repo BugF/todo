@@ -21,18 +21,31 @@ public class UserController {
     @Autowired
     MyWebSocket myWebSocket;
 
+    String userName=null;
     @RequestMapping(value="/todo/user" ,method = RequestMethod.GET)
     public String addUser(){
 
         userService.add();
         return "/index.jsp";
     }
+
+    @RequestMapping(value="/user/loginUser" ,method = RequestMethod.POST)
+    public  @ResponseBody Map  loginUser(){
+        Map<String,Object> obj=new HashMap<>();
+        obj.put("status","true");
+        obj.put("account",userName);
+        return obj;
+    }
     @RequestMapping(value="/todo/login" ,method = RequestMethod.GET)
     public String phonelogin(HttpServletRequest request){
         Map<String,Object> obj=new HashMap<>();
         obj.put("type","scan");
         obj.put("tocken",request.getParameter("tocken"));
+        try{
         myWebSocket.sendMessage(obj);
+        }catch (Exception e){
+            return "redirect:/invalidTocken.html";
+        }
         return "redirect:/mobileLogin.html?tocken="+request.getParameter("tocken");
     }
     @RequestMapping(value="/todo/login" ,method = RequestMethod.POST)
@@ -44,6 +57,7 @@ public class UserController {
         obj.put("passw0rd","111111");
         obj.put("tocken",m.getTocken());
         myWebSocket.sendMessage(obj);
+        userName="flx";
         obj2.put("status","true");
         obj2.put("data","success");
         return obj2;

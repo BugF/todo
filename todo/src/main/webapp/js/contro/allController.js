@@ -1,11 +1,11 @@
 (function (angular) {
     'use strict';
     var appConfig = angular.module('newProject');
-    appConfig.controller('todayController',
+    appConfig.controller('allController',
         ['$scope', 'menuManager','taskService',
             function ($scope, menuManager,taskService) {
         $scope.menuServer = menuManager;
-        $scope.menuServer.showActive('menu_today');
+        $scope.menuServer.showActive('menu_all');
         console.info(JSON.stringify($scope.menuServer));
         $scope.todayData = [];
       //  listTask();
