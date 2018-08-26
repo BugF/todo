@@ -1,12 +1,4 @@
 
-project/
-todo/target/todo.war
-todo/target/todo/WEB-INF/classes/com/todo/controller/WX_Link.class
-*.class
-*.xml
-*.class
+
 todo/.idea/workspace.xml
 todo/target/
-todo/target/classes/com/todo/controller/UserController.class
-todo/target/classes/com/todo/controller/UserController.class
-todo/.idea/workspace.xml

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todo.dao.ListDao">
+
+    <!--<insert id="insert" parameterType="com.todo.entity.List">-->
+        <!--INSERT INTO td_task-->
+        <!--(id,title,create_time,note,alarm_time,creator,be_over,be_delete)-->
+        <!--VALUES-->
+        <!--(#{id},#{title},#{createTime},#{note},#{alarmTime},#{creator},#{beOver},#{beDelete} )-->
+    <!--</insert>-->
+    <insert id="create" parameterType="com.todo.entity.List">
+        INSERT INTO td_list
+        (id,title,create_time)
+        VALUES
+        (#{id},#{title},#{createTime})
+
+    </insert>
+    <update id="update" parameterType="com.todo.entity.List">
+        update td_list set title=#{title} where id=#{id}
+    </update>
+
+    <resultMap id="listResultMap" type="com.todo.entity.List">
+        <id property="id" column="id" />
+        <result property="title" column="title"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <select id="listAll" parameterType="String" resultMap="listResultMap">
+        SELECT * from td_list order by create_time asc
+    </select>
+    <select id="getById" parameterType="String" resultMap="listResultMap">
+        SELECT * from td_list where id=#{id}
+    </select>
+
+</mapper>

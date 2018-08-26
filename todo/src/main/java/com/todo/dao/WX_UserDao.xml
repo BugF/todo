@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todo.dao.WX_UserDao">
+
+   <!-- <insert id="add" parameterType="com.todo.entity.WX_User">
+        INSERT INTO td_wx_user (account,pasw,name) VALUES (#{account},#{pasw},#{name})
+     </insert>-->
+    <select id="find" resultType="com.todo.entity.WX_User">
+        select *
+        from wx_user
+        where openid = #{openid}
+    </select>
+    <insert id="add"
+            parameterType="com.todo.entity.WX_User">
+        insert into wx_user(
+        openid,
+        nickname,
+        headimgurl,
+        unionid,
+        subscribe,
+        sex,
+        `language`,
+        city,
+        province,
+        country,
+        subscribe_time,
+        remark,
+        subscribe_scene,
+        groupid
+        ) values(
+#{openid,jdbcType=VARCHAR},
+#{nickname,jdbcType=VARCHAR},
+#{headimgurl,jdbcType=VARCHAR},
+#{unionid,jdbcType=VARCHAR},
+#{subscribe,jdbcType=INTEGER},
+#{sex,jdbcType=INTEGER},
+#{language,jdbcType=VARCHAR},
+#{city,jdbcType=VARCHAR},
+#{province,jdbcType=VARCHAR},
+#{country,jdbcType=VARCHAR},
+#{subscribe_time,jdbcType=INTEGER},
+#{remark,jdbcType=VARCHAR},
+#{subscribe_scene,jdbcType=VARCHAR},
+#{groupid,jdbcType=INTEGER}
+        )
+    </insert>
+    <!--<update id="updateUser" parameterType="com.springMyBatis.system.model.User">
+         UPDATE user SET password=#{password} WHERE id=#{id}
+     </update>
+    <delete id="deleteUser" parameterType="int">
+         DELETE FROM user WHERE id=#{id}
+     </delete>-->
+</mapper>
