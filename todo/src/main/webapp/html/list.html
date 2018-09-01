@@ -13,21 +13,62 @@
 
     </style>
     <div class="myHead" style="background:forestgreen ;height:150px;line-height:150px;">
-       <div style="position: absolute;bottom: 10px;margin:0 10px;width: 100%">
-           <!--<div class="ui huge icon input">
-               <input type="text" ng-model="_thisList.title">
-               <i class="search icon"></i>
-           </div>-->
-           <div class="ui huge fluid input" style="background-color:transparent">
-               <input ng-dblclick="db()" ng-show="!canUpdate"type="text" style="background-color:transparent;border: 0" readonly="true" ng-model="_thisList.title">
-               <input id="_listTitle" ng-show="canUpdate"type="text" ng-blur="onBlur()" style="background-color: rgba(223, 234, 227, 0.2);" ng-model="_thisList.title">
-           </div>
-       </div>
+
+           <table style="position: absolute;margin:0 ;width: 100%;    top: 45px;">
+               <tr style="width: 100%">
+                   <td>
+                       <div class="ui huge fluid input"
+                            style="background-color:transparent">
+                           <input ng-dblclick="db()"  ng-if="!canUpdate"type="text" style="background-color:transparent;border: 0" readonly="true" ng-model="_thisList.title">
+                           <input id="_listTitle" ng-keyup="listEnterEvent($event)" ng-if="canUpdate"type="text" ng-blur="onBlur()" style="background-color: rgba(223, 234, 227, 0.2);" ng-model="_thisList.title">
+                       </div>
+                   </td>
+                   <td style="width: 100px;">
+                       <div class="ui icon buttons">
+
+                           <button class="ui button"  ng-if="canUpdate"><i class="check icon"></i></button>
+                           <button class="ui button"  ng-if="!canUpdate" ng-click="db()"><i class="edit icon"></i></button>
+                           <button class="ui button"><i class="text width icon"></i></button>
+                           <button class="ui button" ng-click="deleteList()"><i class="trash alternate icon"></i></button>
+                       </div>
+                   </td>
+               </tr>
+           </table>
+
+
+
     </div>
     <div class="myBody" style="background: saddlebrown;top:150px;
-            bottom:0px;">
+            bottom:0px;padding: 7px;">
+        <table class="ui yellow selectable striped table">
+        <tbody>
+            <tr ng-repeat="task in listTasks">
+                <td style="width: 15px;padding: 0;">
+                    <div class="ui animated fade button" tabindex="0" style="padding-right: 0!important;background: transparent;">
+                        <div  class="visible content"><i class="circle blue outline icon"></i></div>
+                        <div  class="hidden content"> <i class="circle blue icon"></i></div>
+                    </div>
+                    <!--<i class="circle blue icon"></i>-->
+                    <!--<i class="circle blue outline icon"></i>-->
+                </td>
+                <td style="-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;">{{task.title}}</td>
 
+            </tr>
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div class="ui fluid icon input">
+                    <input type="text" ng-model="title" ng-keyup="listTaskEnterEvent($event)">
+                    <i class="add link icon" ng-click="addTask()"></i>
+                    </div>
+                </td>
+
+            </tr>
+            </tfoot>
+        </table>
     </div>
 
-    
+
 </div>

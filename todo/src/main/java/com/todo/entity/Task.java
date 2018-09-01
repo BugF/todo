@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  */
 public class Task {
     private String id;
+    private String setId;
     private String title;
     private String note;
     private String creator;
@@ -18,6 +19,15 @@ public class Task {
     private Boolean beDelete;
     private Timestamp createTime;
     private Timestamp alarmTime;
+
+    public String getSetId() {
+        return setId;
+    }
+
+    public void setSetId(String setId) {
+        this.setId = setId;
+    }
+
     public String getId() {
         return id;
     }

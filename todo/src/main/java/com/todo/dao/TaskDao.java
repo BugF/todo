@@ -11,6 +11,7 @@ public interface TaskDao {
      * @param task
      */
     void insert(Task task);
+    void create(Task task);
 
     /**
      * 列出指人指定时间段
@@ -24,6 +25,8 @@ public interface TaskDao {
      * 列出指人
      * @param creator
      */
+    List<Task> list(Task task);
+    void delete(Task task);
     List<Task> listByCreator(String creator);
     List<Task> listByCreatorAndTime(String creator, Timestamp min,Timestamp max);
 }

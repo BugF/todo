@@ -17,11 +17,39 @@
                     defered.reject(result);
                 });
                 return defered.promise;
+            },create: function (obj) {
+                var url = "api/task/create";
+                var defered = $q.defer();
+                $http.post(url, obj)
+                    .then(function (result) {  //正确请求成功时处理
+                        console.info(result);
+                        //alert(result.data);
+                        defered.resolve(result.data);
+                    }).catch(function (result) { //捕捉错误处理
+                    console.info(result);
+                    //alert(result.data.Message);
+                    defered.reject(result);
+                });
+                return defered.promise;
             },
             listByUser: function (obj) {
                 var url = "api/task/listByUser";
                 var defered = $q.defer();
                 $http.post(url, obj)
+                    .then(function (result) {  //正确请求成功时处理
+                        console.info(result);
+                        //alert(result.data);
+                        defered.resolve(result.data);
+                    }).catch(function (result) { //捕捉错误处理
+                    console.info(result);
+                    //alert(result.data.Message);
+                    defered.reject(result);
+                });
+                return defered.promise;
+            },list: function (obj) {
+                var url = "api/task/list";
+                var defered = $q.defer();
+                $http.post(url,obj)
                     .then(function (result) {  //正确请求成功时处理
                         console.info(result);
                         //alert(result.data);

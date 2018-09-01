@@ -9,6 +9,24 @@
         VALUES
         (#{id},#{title},#{createTime},#{note},#{alarmTime},#{creator},#{beOver},#{beDelete} )
     </insert>
+    <insert id="create" parameterType="com.todo.entity.Task">
+        INSERT INTO td_task
+        <choose>
+            <when test="setId!=null">
+                (id,title,create_time,set_id,creator,be_over,be_delete)
+                VALUES
+                (#{id},#{title},#{createTime},#{setId},#{creator},#{beOver},#{beDelete} )
+            </when>
+            <otherwise>
+                (id,title,create_time,creator,be_over,be_delete)
+                VALUES
+                (#{id},#{title},#{createTime},#{creator},#{beOver},#{beDelete} )
+            </otherwise>
+        </choose>
+
+
+
+    </insert>
 
     <resultMap id="taskResultMap" type="com.todo.entity.Task">
         <id property="id" column="id" />
@@ -18,9 +36,23 @@
         <result property="alarmTime" column="alarm_time"/>
         <result property="creator" column="creator"/>
         <result property="beOver" column="be_over"/>
+        <result property="setId" column="set_id"/>
         <result property="beDelete" column="be_delete"/>
     </resultMap>
 
+    <select id="list" parameterType="com.todo.entity.Task" resultMap="taskResultMap">
+        SELECT * from td_task WHERE 1=1
+        <if test="setId!=null">
+            and set_id=#{setId}
+        </if>
+        <if test="beOver!=null">
+            and be_over=#{beOver}
+        </if>
+        <if test="beDelete!=null">
+            and be_delete=#{beDelete}
+        </if>
+
+    </select>
     <select id="listByCreator" parameterType="String" resultMap="taskResultMap">
         SELECT * from td_task WHERE creator=#{creator}
     </select>

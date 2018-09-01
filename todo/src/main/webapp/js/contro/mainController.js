@@ -6,6 +6,7 @@
             function ($scope, menuManager,taskService,listService,$location) {
                 $scope.menuServer = menuManager;
                 $scope.status = "扫描上方二维码";
+                $scope.loading=false;
                 var titles=[];
                 // function addTitle(title) {
                 //     titles.push()
@@ -46,6 +47,7 @@
               //  websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket?ppp=123");
 
                 $scope.addList=function(){
+                    $scope.loading=true;
                     var title=getTitle();
                     listService.create(title).then(
                         function (data) {
@@ -53,13 +55,17 @@
                                 $scope.menuServer.listMenuTitleArr.push(data.datas.title);
                                 $scope.menuServer.listMenuMap[data.datas.id]=data.datas;
                                 $scope.menuServer.listMenuIdArr.push(data.datas.id);
-
+                                goToList(data.datas.id);
                             }
+                            $scope.loading=false;
                         }
                     )
                 }
+                function goToList(id){
+                    $location.path('/list/' + id);
+                }
                 $scope.goToList=function(id){
-                    $location.path('/list/' + id)
+                    goToList(id);
                 }
                 listAllLIST();
                 $scope._LISTS=[];

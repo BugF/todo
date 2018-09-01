@@ -37,6 +37,16 @@ public class ListController {
         System.out.println("ddd");
         return map;
     }
+    @RequestMapping(value="list/delete" ,method = RequestMethod.POST)
+    public @ResponseBody Map delete(@RequestBody com.todo.entity.List list){
+        ModelAndView modelAndView=new ModelAndView("json");
+        Map<String,Object> map=new HashMap();
+        listService.delete(list);
+        map.put("status","true");
+        modelAndView.addObject(map);
+        System.out.println("ddd");
+        return map;
+    }
     @RequestMapping(value="list/listAll" ,method = RequestMethod.POST)
     public @ResponseBody Map listAll(){
         ModelAndView modelAndView=new ModelAndView("json");

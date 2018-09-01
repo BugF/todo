@@ -25,8 +25,26 @@ public class TaskService {
         taskDao.insert(obj);
     }
     @Transactional
+    public Task create(Task obj){
+        obj.setId("TASK_"+Util.buildID());
+        obj.setBeOver(false);
+        obj.setBeDelete(false);
+        obj.setCreateTime(new Timestamp(new Date().getTime()));
+        obj.setCreator("flx");
+        taskDao.create(obj);
+        return obj;
+    }
+    @Transactional
     public List<Task> listByCreator(String creator){
         return taskDao.listByCreator(creator);
+    }
+    @Transactional
+    public List<Task> list(Task t){
+        return taskDao.list(t);
+    }
+    @Transactional
+    public void delete(Task t){
+        taskDao.delete(t);
     }
 
 

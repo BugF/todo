@@ -20,6 +20,12 @@
         update td_list set title=#{title} where id=#{id}
     </update>
 
+    <delete id="delete" parameterType="com.todo.entity.List">
+        delete from td_list where 1=1
+        <if test="id!=null">
+            and id=#{id}
+        </if>
+    </delete>
     <resultMap id="listResultMap" type="com.todo.entity.List">
         <id property="id" column="id" />
         <result property="title" column="title"/>

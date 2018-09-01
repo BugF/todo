@@ -29,6 +29,10 @@ public class ListService {
         return list;
     }
     @Transactional
+    public void delete(List list){
+        listDao.delete(list);
+    }
+    @Transactional
     public java.util.List<List> listAll(){
         return listDao.listAll();
     }

@@ -17,6 +17,20 @@
                     defered.reject(result);
                 });
                 return defered.promise;
+            },delete: function (obj) {
+                var url = "api/list/delete";
+                var defered = $q.defer();
+                $http.post(url,obj)
+                    .then(function (result) {  //正确请求成功时处理
+                        console.info(result);
+
+                        defered.resolve(result.data);
+                    }).catch(function (result) { //捕捉错误处理
+                    console.info(result);
+                    //alert(result.data.Message);
+                    defered.reject(result);
+                });
+                return defered.promise;
             },
             insert: function (obj) {
                 var url = "api/task/insert";
@@ -51,6 +65,20 @@
                 var url = "api/list/listAll";
                 var defered = $q.defer();
                 $http.post(url)
+                    .then(function (result) {  //正确请求成功时处理
+                        console.info(result);
+                        //alert(result.data);
+                        defered.resolve(result.data);
+                    }).catch(function (result) { //捕捉错误处理
+                    console.info(result);
+                    //alert(result.data.Message);
+                    defered.reject(result);
+                });
+                return defered.promise;
+            },list: function (obj) {
+                var url = "api/list/listAll";
+                var defered = $q.defer();
+                $http.post(url,obj)
                     .then(function (result) {  //正确请求成功时处理
                         console.info(result);
                         //alert(result.data);

@@ -29,12 +29,30 @@ public class TaskController {
         System.out.println("ddd");
         return map;
     }
+    @RequestMapping(value="task/create" ,method = RequestMethod.POST)
+    public @ResponseBody Map create(@RequestBody Task obj){
+        ModelAndView modelAndView=new ModelAndView("json");
+        Map<String,Object> map=new HashMap();
+        map.put("status","true");
+        map.put("datas", taskService.create(obj));
+        modelAndView.addObject(map);
+        return map;
+    }
     @RequestMapping(value="task/listByUser" ,method = RequestMethod.POST)
     public @ResponseBody Map listByCreator(@RequestBody String user){
         Map<String,Object> map=new HashMap();
         List<Task> list= taskService.listByCreator(user);
         map.put("status","true");
         map.put("data",list);
+        System.out.println("ddd");
+        return map;
+    }
+    @RequestMapping(value="task/list" ,method = RequestMethod.POST)
+    public @ResponseBody Map list(@RequestBody Task task){
+        Map<String,Object> map=new HashMap();
+        List<Task> list= taskService.list(task);
+        map.put("status","true");
+        map.put("datas",list);
         System.out.println("ddd");
         return map;
     }
