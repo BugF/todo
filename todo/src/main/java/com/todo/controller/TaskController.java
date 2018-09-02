@@ -56,6 +56,13 @@ public class TaskController {
         System.out.println("ddd");
         return map;
     }
+    @RequestMapping(value="task/delete" ,method = RequestMethod.POST)
+    public @ResponseBody Map delete(@RequestBody Task task){
+        Map<String,Object> map=new HashMap();
+       taskService.delete(task);
+        map.put("status","true");
+        return map;
+    }
    /* @RequestMapping(value="task/listMyToday" ,method = RequestMethod.POST)
     public @ResponseBody Map listMyToday(@RequestBody String user){
         Map<String,Object> map=new HashMap();

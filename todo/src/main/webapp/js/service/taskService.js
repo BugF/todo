@@ -60,6 +60,20 @@
                     defered.reject(result);
                 });
                 return defered.promise;
+            },delete: function (obj) {
+                var url = "api/task/delete";
+                var defered = $q.defer();
+                $http.post(url,obj)
+                    .then(function (result) {  //正确请求成功时处理
+                        console.info(result);
+                        //alert(result.data);
+                        defered.resolve(result.data);
+                    }).catch(function (result) { //捕捉错误处理
+                    console.info(result);
+                    //alert(result.data.Message);
+                    defered.reject(result);
+                });
+                return defered.promise;
             },
             loginUser: function () {
                 var url = "api/user/loginUser";

@@ -53,6 +53,22 @@
         </if>
 
     </select>
+    <delete id="delete" parameterType="com.todo.entity.Task">
+        delete from td_task WHERE 1=1
+        <if test="id!=null">
+            and id=#{id}
+        </if>
+        <if test="setId!=null">
+            and set_id=#{setId}
+        </if>
+        <if test="beOver!=null">
+            and be_over=#{beOver}
+        </if>
+        <if test="beDelete!=null">
+            and be_delete=#{beDelete}
+        </if>
+
+    </delete>
     <select id="listByCreator" parameterType="String" resultMap="taskResultMap">
         SELECT * from td_task WHERE creator=#{creator}
     </select>

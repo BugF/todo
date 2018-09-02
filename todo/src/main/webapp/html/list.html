@@ -12,6 +12,7 @@
         }
 
     </style>
+    <div id="list_page" style=" transition: 0.5s;position: absolute;margin:0;left:0;right:0px;top: 0;bottom: 0;">
     <div class="myHead" style="background:forestgreen ;height:150px;line-height:150px;">
 
            <table style="position: absolute;margin:0 ;width: 100%;    top: 45px;">
@@ -34,9 +35,6 @@
                    </td>
                </tr>
            </table>
-
-
-
     </div>
     <div class="myBody" style="background: saddlebrown;top:150px;
             bottom:0px;padding: 7px;">
@@ -48,27 +46,32 @@
                         <div  class="visible content"><i class="circle blue outline icon"></i></div>
                         <div  class="hidden content"> <i class="circle blue icon"></i></div>
                     </div>
-                    <!--<i class="circle blue icon"></i>-->
-                    <!--<i class="circle blue outline icon"></i>-->
                 </td>
-                <td style="-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;">{{task.title}}</td>
-
+                <td ng-dblclick="openTaskDetail(task)" style="-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;">
+                    {{task.title}}
+                </td>
+                <td style="width: 150px;padding: 0;">
+                    <div class="ui icon buttons">
+                        <button class="ui button" ><i class="edit icon"></i></button>
+                        <button class="ui button" ng-click="deleteTask($index)"><i class="trash alternate icon"></i></button>
+                    </div>
+                </td>
             </tr>
-
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="2">
+                <td colspan="3">
                     <div class="ui fluid icon input">
                     <input type="text" ng-model="title" ng-keyup="listTaskEnterEvent($event)">
                     <i class="add link icon" ng-click="addTask()"></i>
                     </div>
                 </td>
-
             </tr>
             </tfoot>
         </table>
     </div>
+    </div>
+    <div id="task_page" style=" transition: 0.5s;position: absolute;top: 0; padding:10px;bottom: 0;right: 0;left: 0px;overflow-y: auto;">
 
-
+    </div>
 </div>

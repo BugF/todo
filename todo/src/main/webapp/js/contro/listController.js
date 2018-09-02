@@ -190,6 +190,22 @@
 
                         }
                     );
+                };
+                $scope.openTaskDetail=function(obj){
+                    $('#task_page').css("left","400px");
+                    $('#list_page').css("right","400px");
+                };
+                $scope.deleteTask=function (i) {
+                    var a={
+                        id:angular.copy($scope.listTasks[i].id)
+                    };
+                    taskService.delete(a).then(
+                        function (data) {
+                            if(data.status=='true'){
+                                $scope.listTasks.splice(i,1);
+                            }
+                        }
+                    )
                 }
                 function goToList(id){
                     $location.path('/list/' + id);
