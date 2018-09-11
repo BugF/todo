@@ -9,6 +9,15 @@ public class List {
     private String id;
     private String title;
     private Timestamp createTime;
+    private int taskCount;
+
+    public int getTaskCount() {
+        return taskCount;
+    }
+
+    public void setTaskCount(int taskCount) {
+        this.taskCount = taskCount;
+    }
 
     public String getId() {
         return id;

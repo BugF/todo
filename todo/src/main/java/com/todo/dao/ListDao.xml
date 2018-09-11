@@ -30,10 +30,12 @@
         <id property="id" column="id" />
         <result property="title" column="title"/>
         <result property="createTime" column="create_time"/>
+        <result property="taskCount" column="task_count"/>
+
     </resultMap>
 
     <select id="listAll" parameterType="String" resultMap="listResultMap">
-        SELECT * from td_list order by create_time asc
+        select l.id as id ,count(t.id) as task_count ,l.create_time as create_time,l.title as title from td_list as l left join td_task as t on(t.set_id=l.id and t.be_delete=false and t.be_over=false) group by l.id order by create_time
     </select>
     <select id="getById" parameterType="String" resultMap="listResultMap">
         SELECT * from td_list where id=#{id}

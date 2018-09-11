@@ -14,7 +14,6 @@
     </style>
     <div id="list_page" style=" transition: 0.5s;position: absolute;margin:0;left:0;right:0px;top: 0;bottom: 0;">
     <div class="myHead" style="background:forestgreen ;height:150px;line-height:150px;">
-
            <table style="position: absolute;margin:0 ;width: 100%;    top: 45px;">
                <tr style="width: 100%">
                    <td>
@@ -40,14 +39,14 @@
             bottom:0px;padding: 7px;">
         <table class="ui yellow selectable striped table">
         <tbody>
-            <tr ng-repeat="task in listTasks">
+            <tr ng-repeat="task in listTasks" >
                 <td style="width: 15px;padding: 0;">
                     <div class="ui animated fade button" tabindex="0" style="padding-right: 0!important;background: transparent;">
                         <div  class="visible content"><i class="circle blue outline icon"></i></div>
                         <div  class="hidden content"> <i class="circle blue icon"></i></div>
                     </div>
                 </td>
-                <td ng-dblclick="openTaskDetail(task)" style="-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;">
+                <td ng-click="selectTask(task)" ng-dblclick="openTaskDetail()" style="-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;">
                     {{task.title}}
                 </td>
                 <td style="width: 150px;padding: 0;">
@@ -71,7 +70,17 @@
         </table>
     </div>
     </div>
-    <div id="task_page" style=" transition: 0.5s;position: absolute;top: 0; padding:10px;bottom: 0;right: 0;left: 0px;overflow-y: auto;">
-
+    <div id="task_page" style="visibility: hidden;background: yellow; transition: 0.5s;position: absolute;margin:0;width:400px;right:-400px;top: 0;bottom: 0;overflow-y: auto;">
+        <div class="myHead" style=" background: red; height: 30px;line-height: 30px;">
+            <i class="ui angle double right icon" style="cursor:pointer;" ng-click="closeTaskDetail()"></i>
+        </div>
+        <div class="myBody" style="background: #5a30b5;height: 300px;top:30px;padding:7px;">
+            <h2 class="ui header">
+                <i class="settings icon"></i>
+                <div class="content">{{_thisTask.title}}
+                    <div class="sub header">{{_thisTask.createTime | date:"yyyy/MM/dd"}}</div>
+                </div>
+            </h2>
+        </div>
     </div>
 </div>

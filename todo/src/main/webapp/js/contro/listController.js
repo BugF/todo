@@ -48,6 +48,10 @@
                         function (data) {
                             if (data.status === 'true') {
                                 $scope.listTasks.push(data.datas);
+                                if(null!=data.datas.setId){
+                                    $scope.menuServer.listMenuMap[data.datas.setId].taskCount++;
+
+                                }
                             }
                             $scope.title=null;
                             isCreating=false;
@@ -191,9 +195,19 @@
                         }
                     );
                 };
-                $scope.openTaskDetail=function(obj){
-                    $('#task_page').css("left","400px");
+                $scope.selectTask=function(obj){
+                    $scope._thisTask=obj;
+                }
+                $scope.openTaskDetail=function(){
+
+                     $('#task_page').css("visibility","visible");
+                    $('#task_page').css("right","0px");
                     $('#list_page').css("right","400px");
+                };
+                $scope.closeTaskDetail=function(){
+                     $('#task_page').css("right","-400px");
+                     $('#task_page').css("visibility","hidden");
+                    $('#list_page').css("right","0px");
                 };
                 $scope.deleteTask=function (i) {
                     var a={
