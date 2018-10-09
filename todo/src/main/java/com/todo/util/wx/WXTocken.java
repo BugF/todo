@@ -2,7 +2,8 @@ package com.todo.util.wx;
 
 import com.google.gson.Gson;
 import com.todo.util.ConfigUtil;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
 public class WXTocken {
     private static String tocken=null;
     private static long createTime=0;
+    private static final Logger logger = LogManager.getLogger(WXTocken.class.getName());
 
     //获取tocken
     public static String getTocken(){
@@ -35,6 +37,7 @@ public class WXTocken {
             //createTime=new Timestamp(new Date().getTime());
         }
         System.out.println(tocken);
+        logger.info("tocken***="+tocken);
         return tocken;
     }
 }

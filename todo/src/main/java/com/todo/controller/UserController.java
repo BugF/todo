@@ -84,6 +84,9 @@ public class UserController {
                 "&grant_type=authorization_code");
         System.out.println("*************data="+data);
         Map<String,Object> map=new Gson().fromJson(data,Map.class);
+        if(map.containsKey("errcode")){
+            return "redirect:/invalidTocken.html";
+        }
         String tocken=state.indexOf("#")>0?state.substring(0,state.indexOf("#")):state;
         System.out.println("**************tocken="+tocken);
         Map<String,Object> obj=new HashMap<>();
@@ -95,9 +98,59 @@ public class UserController {
             e.printStackTrace();
             return "redirect:/invalidTocken.html";
         }
-        request.setAttribute("openid",obj.get("openid"));
+        request.setAttribute("openid",map.get("openid"));
         request.setAttribute("tocken",tocken);
         return "/mobileLogin.jsp";
+    }
+    @RequestMapping(value="/user/WXopenId" ,method = RequestMethod.GET)
+    public String WXopenId(HttpServletRequest request){
+        String code=request.getParameter("code");
+        String state=request.getParameter("state");
+
+        String data=HttpUtil.doGet("https://api.weixin.qq.com/sns/oauth2/access_token?" +
+                "appid=" +ConfigUtil.getContextProperty("APPID")+"" +
+                "&secret="+ ConfigUtil.getContextProperty("APPSECRET")+"" +
+                "&code="+code+
+                "&grant_type=authorization_code");
+        System.out.println("*************data="+data);
+        Map<String,Object> map=new Gson().fromJson(data,Map.class);
+        if(map.containsKey("errcode")){
+            return "redirect:/invalidTocken.html";
+        }
+        String tocken=state.indexOf("#")>0?state.substring(0,state.indexOf("#")):state;
+        System.out.println("**************tocken="+tocken);
+        Map<String,Object> obj=new HashMap<>();
+        obj.put("type","scan");
+        obj.put("tocken",tocken);
+        try{
+            myWebSocket.sendMessage(obj);
+        }catch (Exception e){
+            e.printStackTrace();
+            return "redirect:/invalidTocken.html";
+        }
+        request.setAttribute("openid",map.get("openid"));
+        request.setAttribute("tocken",tocken);
+        return "/mobileLogin.jsp";
+    }
+    @RequestMapping(value="/user/bindWX" ,method = RequestMethod.GET)
+    public String bindWX(HttpServletRequest request){
+        String code=request.getParameter("code");
+        String state=request.getParameter("state");
+
+        String data=HttpUtil.doGet("https://api.weixin.qq.com/sns/oauth2/access_token?" +
+                "appid=" +ConfigUtil.getContextProperty("APPID")+"" +
+                "&secret="+ ConfigUtil.getContextProperty("APPSECRET")+"" +
+                "&code="+code+
+                "&grant_type=authorization_code");
+        System.out.println("*************data="+data);
+        Map<String,Object> map=new Gson().fromJson(data,Map.class);
+        if(map.containsKey("errcode")){
+            return "redirect:/invalidTocken.html";
+        }
+        String tocken=state.indexOf("#")>0?state.substring(0,state.indexOf("#")):state;
+        request.setAttribute("openid",map.get("openid"));
+        request.setAttribute("tocken",tocken);
+        return "forward:/mobileLogin.jsp";
     }
     @RequestMapping(value="/todo/login" ,method = RequestMethod.POST)
     public  @ResponseBody Map phonelogin(@RequestBody LoginTocken m){

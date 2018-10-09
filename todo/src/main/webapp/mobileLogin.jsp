@@ -1,52 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=utf-8"%>
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>扫码登录</title>
-    <link rel="stylesheet" type="text/css" href="/render/semantic.min.css">
-    <script src="/js/library/jquery.min.js"></script>
-    <script src="/render/semantic.min.js"></script>
-    <script type="text/javascript" src="/js/library/sockjs.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/render/semantic.min.css">
+    <script src="<%= request.getContextPath()%>/js/library/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/render/semantic.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/library/sockjs.min.js"></script>
 </head>
 <body style="background: lavender;height: 90%;">
 <div style="width: 100%;position: fixed;bottom: 30px;">
-<div class="ui two column centered grid" style="padding-top: 30px;height: 100%">
-    <div class="column">
-        <div class="ui center card">
-            <div class="image" style="width: 100%;text-align: center;">
-                <i class="ui massive user icon"></i>
+    <%String tocken= (String) request.getAttribute("tocken");%>
+    <%String openid= (String) request.getAttribute("openid");%>
+    <div class="ui two column centered grid" style="padding-top: 30px;height: 100%">
+        <div class="column">
+            <div class="ui center card">
+                <div class="image" style="width: 100%;text-align: center;">
+                    <i class="ui massive user icon"></i>
+                </div>
+                <div class="content">
+                    <%=openid%>
+                    <%=tocken%>
+                    <%=request.getAttribute("openid")%>
+                    <%=request.getAttribute("tocken")%>
+                    <div class="description">点击下面按钮，允许登录 </div>
+                </div>
+                <div class="extra content">
+                    <div class="ui fluid button" id="canLogin"> 允许登录</div>
+                </div>
             </div>
-            <div class="content">
-                <div class="description">点击下面按钮，允许登录 </div>
-            </div>
-            <div class="extra content">
-                <div class="ui fluid button" id="canLogin"> 允许登录</div>
-            </div>
+
+
         </div>
-
-
     </div>
 </div>
-</div>
 
 
 
-     <script type="text/javascript">
-         $(document).ready(function(){
+<script type="text/javascript">
+    jQuery(document).ready(function(){
 
-         var websocket = null;
-         websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket");
-         websocket.onopen = onOpen;
-         websocket.onmessage = onMessage;
-         websocket.onerror = onError;
-         websocket.onclose = onClose;
+        var websocket = null;
+        websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket");
+        websocket.onopen = onOpen;
+        websocket.onmessage = onMessage;
+        websocket.onerror = onError;
+        websocket.onclose = onClose;
 
-         function onOpen(openEvt) {
-             console.info(JSON.stringify(openEvt));
-         }
+        function onOpen(openEvt) {
+            console.info(JSON.stringify(openEvt));
+        }
 
-         function onMessage(evt) {
+        function onMessage(evt) {
 //             var obj=JSON.parse(evt.data)
 //             console.info(JSON.stringify(evt.data));
 //             if(obj.type=='onLogin'){
@@ -59,59 +66,60 @@
 //                 alert($scope.userName)
 //             }
 
-         }
-         function onError(openEvt) {
-             console.info(JSON.stringify(openEvt));
-         }
-         function onClose(openEvt) {
-             console.info(JSON.stringify(openEvt));
-         }
+        }
+        function onError(openEvt) {
+            console.info(JSON.stringify(openEvt));
+        }
+        function onClose(openEvt) {
+            console.info(JSON.stringify(openEvt));
+        }
 
-             $('#canLogin').click(
-             function () {
+        jQuery('#canLogin').click(
+            function () {
+                alert("dj")
 //                 var datas=GetRequest();
-                 var as={
-                     tocken:<%=request.getParameter("tocken")%>,
-                     openid:<%=request.getParameter("openid")%>,
-                     type:'canLogin'
-                 }
+                var as={
+                    tocken:'<%=tocken%>',
+                    openid:'<%=openid%>',
+                    type:'canLogin'
+                }
 //                 websocket.send(as);
 //                 $.post("api/todo/login",JSON.stringify(as),
 //                     function(data,status){
 //                         alert("数据: \n" + data + "\n状态: " + status);
 //                     });
-                 $.ajax({
-                     //提交数据的类型 POST GET
-                     type:"POST",
-                     //提交的网址
-                     url:"api/todo/login",
-                     //提交的数据
+                jQuery.ajax({
+                    //提交数据的类型 POST GET
+                    type:"POST",
+                    //提交的网址
+                    url:"http://"+document.location.host+"/todo/api/todo/login",
+                    //提交的数据
 
-                     //返回数据的格式
-                     dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
-                     contentType : 'application/json',
-                     data : JSON.stringify(as),
-                     //在请求之前调用的函数
-                   //  beforeSend:function(){$("#msg").html("logining");},
-                     //成功返回之后调用的函数
-                     success:function(data){
-                     alert(JSON.stringify(data));
-                         //  $("#msg").html(decodeURI(data));
-                     }   ,
-                     //调用执行后调用的函数
-                     complete: function(XMLHttpRequest, textStatus){
+                    //返回数据的格式
+                    dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
+                    contentType : 'application/json',
+                    data : JSON.stringify(as),
+                    //在请求之前调用的函数
+                    //  beforeSend:function(){$("#msg").html("logining");},
+                    //成功返回之后调用的函数
+                    success:function(data){
+                        alert(JSON.stringify(data));
+                        //  $("#msg").html(decodeURI(data));
+                    }   ,
+                    //调用执行后调用的函数
+                    complete: function(XMLHttpRequest, textStatus){
 //                         alert(XMLHttpRequest.responseText);
 //                         alert(textStatus);
-                         //HideLoading();
-                     },
-                     //调用出错执行的函数
-                     error: function(){
-                         //请求出错处理
-                     }
-                 });
+                        //HideLoading();
+                    },
+                    //调用出错执行的函数
+                    error: function(){
+                        //请求出错处理
+                    }
+                });
 
-             }
-         )
+            }
+        )
 //         $scope.doSend=function() {
 //             websocket.send($scope.message);//调用后台handleTextMessage方法
 //         };
@@ -124,9 +132,9 @@
 //             websocket.onclose();
 //         }
 
-         });
+    });
 
-     </script>
+</script>
 
 </body>
 </html>
