@@ -9,7 +9,7 @@
                 $scope.canUpdate = false;
                 $scope._thisList =
                     angular.copy($scope.menuServer.listMenuMap[$routeParams.id]);
-                var oldTitle = angular.copy($scope._thisList.title);
+
                 // $('#_listTitle').dblclick(function (e) {
                 //     $('#_listTitle').attr("readonly",false);
                 //     $('#_listTitle').css("background-color", 'rgba(223, 234, 227, 0.2)');
@@ -21,7 +21,6 @@
                 function getTasks() {
                     var a = {
                         setId: $routeParams.id,
-                        beOver: false,
                         beDelete: false
                     };
                     $scope.listTasks = [];
@@ -47,9 +46,9 @@
                     taskService.create(a).then(
                         function (data) {
                             if (data.status === 'true') {
-                                $scope.listTasks.push(data.datas);
+                                $scope.listTasks.splice($scope.menuServer.listMenuMap[data.datas.setId].allTaskCount-$scope.menuServer.listMenuMap[data.datas.setId].overTaskCount, 0, data.datas);
                                 if(null!=data.datas.setId){
-                                    $scope.menuServer.listMenuMap[data.datas.setId].taskCount++;
+                                    $scope.menuServer.listMenuMap[data.datas.setId].allTaskCount++;
 
                                 }
                             }
@@ -59,6 +58,24 @@
                     )
                 }
 
+                $scope.overTask=function(task){
+                    task.beOver=null;
+                    taskService.overTask(task).then(
+                        function (obj) {
+                            if(obj.status=='true'){
+                                task.beOver=true;
+                                console.log("sssss")
+                                $scope.menuServer.listMenuMap[task.setId].overTaskCount++;
+
+                            }else{
+                                task.beOver=false;
+                                console.log("fffff")
+                            }
+                        },function (reason) {
+                            task.beOver=false;
+                        }
+                    )
+                }
                 $scope.addTask = function () {
                     createTask();
                 };
@@ -210,6 +227,7 @@
                     $('#list_page').css("right","0px");
                 };
                 $scope.deleteTask=function (i) {
+                    var task=angular.copy($scope.listTasks[i]);
                     var a={
                         id:angular.copy($scope.listTasks[i].id)
                     };
@@ -217,6 +235,11 @@
                         function (data) {
                             if(data.status=='true'){
                                 $scope.listTasks.splice(i,1);
+                                if(true===task.beOver){
+                                    $scope.menuServer.listMenuMap[task.setId].overTaskCount--;
+                                }
+                                $scope.menuServer.listMenuMap[task.setId].allTaskCount--;
+
                             }
                         }
                     )
@@ -228,6 +251,7 @@
                     $location.path('/menu_today');
                 }
                 $('.pointing.dropdown.button').dropdown();
+                var oldTitle = angular.copy($scope._thisList.title);
                 /*$scope.gotoTransh=function(){
                     $('.shape').shape('flip right');
                 }

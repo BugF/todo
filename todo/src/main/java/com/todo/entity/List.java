@@ -9,14 +9,24 @@ public class List {
     private String id;
     private String title;
     private Timestamp createTime;
-    private int taskCount;
+    private int allTaskCount;
+    private int overTaskCount;
 
-    public int getTaskCount() {
-        return taskCount;
+
+    public int getAllTaskCount() {
+        return allTaskCount;
     }
 
-    public void setTaskCount(int taskCount) {
-        this.taskCount = taskCount;
+    public void setAllTaskCount(int allTaskCount) {
+        this.allTaskCount = allTaskCount;
+    }
+
+    public int getOverTaskCount() {
+        return overTaskCount;
+    }
+
+    public void setOverTaskCount(int overTaskCount) {
+        this.overTaskCount = overTaskCount;
     }
 
     public String getId() {

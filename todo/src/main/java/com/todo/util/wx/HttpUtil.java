@@ -32,13 +32,16 @@ public class HttpUtil {
      *
      * @return
      */
-    public static void main(String[] args) {
-        String url="http://192.168.1.234:8080/api/user/test";
-        Map<String,String> a=new HashMap<String, String>();
-        a.put("id","iiiddd");
-        a.put("id2","iiiddd");
 
-        System.out.println(doPost(url,a));
+    public static void main(String[] args) {
+        String a="asdasdasd#asdasd";
+        System.out.println(a.substring(0,a.indexOf("#")));
+//        String url="http://192.168.1.234:8080/api/user/test";
+//        Map<String,String> a=new HashMap<String, String>();
+//        a.put("id","iiiddd");
+//        a.put("id2","iiiddd");
+//
+//        System.out.println(doPost(url,a));
         /*System.out.println(doGet("http://test-oneshot.shinewonder" +
                 ".com/api/thumb/show?id=f1f41056-cca1-48ae-acc4-708a3561fd09"));*/
     }

@@ -72,7 +72,7 @@
                         <tr ng-repeat="l in menuServer.listMenuIdArr">
                             <td  style="cursor: move"><i class="ui list icon"> </i></td>
                             <td  ng-click="goToList(l)" style="cursor: pointer;-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;" > {{menuServer.listMenuMap[l].title}}</td>
-                            <td  style="cursor: pointer;-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;" class="right aligned">{{menuServer.listMenuMap[l].taskCount}}</td>
+                            <td  style="cursor: pointer;-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;" class="right aligned">(完成{{menuServer.listMenuMap[l].overTaskCount}}/共{{menuServer.listMenuMap[l].allTaskCount}})</td>
                         </tr>
 
                     </table>
@@ -122,6 +122,7 @@
     <script src="js/service/menuServer.js"></script>
     <script src="js/service/taskService.js"></script>
     <script src="js/service/listService.js"></script>
+    <script src="js/service/userService.js"></script>
 
     <script type="text/javascript" src="js/library/sockjs.min.js"></script>
     <script src="js/drivate/repeatFinish.js"></script>
@@ -138,16 +139,50 @@
 
     <script src="render/timePicker/jquery-ui-timepicker-addon.js"></script>
     <script src="render/timePicker/i18n/jquery-ui-timepicker-zh-CN.js"></script>
-    <div class="ui mini centered basic modal" style="width: 360px;" id="QEM_Modal">
-        <div class="ui img centered header" align="center">
-            <div id="QEM" style="width: 360px;height: 360px;text-align: center" align="center"> </div>
-        </div>
-        <div class="content" style="text-align: center;">
-            <div>{{status}}</div>
-        </div>
-        <div class="actions">
+    <!--<div class="ui mini centered basic modal" style="width: 360px;" id="QEM_Modal">-->
+        <!--<div class="ui img centered header" align="center">-->
+            <!--<div id="QEM" style="width: 360px;height: 360px;text-align: center" align="center"> </div>-->
+        <!--</div>-->
+        <!--<div class="content" style="text-align: center;">-->
+            <!--<div>{{status}}</div>-->
+        <!--</div>-->
+        <!--<div class="actions">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="ui login modal">
+        <div class="header">还未登陆</div>
+        <div class="content">
+            <div class="ui two column very relaxed stackable grid">
+                <div class="column">
+                    <form action="api/j_spring_security_check" method="post" class="ui form">
+                        <div class="field">
+                            <label>Username</label>
+                            <div class="ui left icon input">
+                                <input type="text" ng-model="username" name="username" placeholder="Username">
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <div class="ui left icon input">
+                                <input type="password" ng-model="password" name="password">
+                                <i class="lock icon"></i>
+                            </div>
+                        </div>
+                        <button type="submit" class="ui blue submit button">Login</button>
+                    </form>
+                </div>
+                <div class="middle aligned column">
+                    <div id="QEM" style="width: 360px;height: 360px;text-align: center" align="center"> </div>
+                    <div>{{status}}</div>
+                </div>
+            </div>
+            <div class="ui vertical divider">Or </div>
         </div>
     </div>
+
+
 </body>
 
 </html>

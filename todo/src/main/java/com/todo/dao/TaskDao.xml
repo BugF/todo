@@ -51,7 +51,7 @@
         <if test="beDelete!=null">
             and be_delete=#{beDelete}
         </if>
-
+        order by be_over asc,create_time asc
     </select>
     <delete id="delete" parameterType="com.todo.entity.Task">
         delete from td_task WHERE 1=1
@@ -75,5 +75,8 @@
     <select id="listByCreatorAndTime"  resultMap="taskResultMap">
         SELECT * from td_task WHERE creator=#{creator} and alarm_time&gt;${}
     </select>
+    <update id="setOver" parameterType="com.todo.entity.Task">
+        update td_task set be_over=1 where id=#{id}
+    </update>
 
 </mapper>

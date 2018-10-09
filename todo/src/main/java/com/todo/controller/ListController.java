@@ -50,10 +50,15 @@ public class ListController {
     @RequestMapping(value="list/listAll" ,method = RequestMethod.POST)
     public @ResponseBody Map listAll(){
         ModelAndView modelAndView=new ModelAndView("json");
-        Map<String,Object> map=new HashMap();
-        map.put("status","true");
-        map.put("datas",listService.listAll());
-        modelAndView.addObject(map);
+        Map<String, Object> map = new HashMap();
+        try {
+
+            map.put("datas", listService.listAll());
+            map.put("status", "true");
+            modelAndView.addObject(map);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return map;
     } @RequestMapping(value="list/getById" ,method = RequestMethod.POST)
     public @ResponseBody Map getById(@RequestBody String id){

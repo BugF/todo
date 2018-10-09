@@ -12,6 +12,7 @@ public interface TaskDao {
      */
     void insert(Task task);
     void create(Task task);
+    void setOver(Task task);
 
     /**
      * 列出指人指定时间段

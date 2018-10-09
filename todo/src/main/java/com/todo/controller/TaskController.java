@@ -29,6 +29,17 @@ public class TaskController {
         System.out.println("ddd");
         return map;
     }
+    @RequestMapping(value="task/setOver" ,method = RequestMethod.POST)
+    public @ResponseBody Map setOver(@RequestBody Task obj){
+        System.out.println(null==obj);
+        ModelAndView modelAndView=new ModelAndView("json");
+        Map<String,String> map=new HashMap();
+        taskService.setOver(obj);
+        map.put("status","true");
+        modelAndView.addObject(map);
+        System.out.println("ddd");
+        return map;
+    }
     @RequestMapping(value="task/create" ,method = RequestMethod.POST)
     public @ResponseBody Map create(@RequestBody Task obj){
         ModelAndView modelAndView=new ModelAndView("json");

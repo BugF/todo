@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security.xsd">
+    <!--suppress UnparsedCustomBeanInspection -->
+    <http auto-config="true">
+        <csrf disabled="true"/>
+        <http-basic/>
+
+        <intercept-url pattern="/index.html" access="permitAll" />
+        <intercept-url pattern="/api/**" access="permitAll"/>
+        <!--<intercept-url pattern="/api/websocket" access="permitAll"/>-->
+        <intercept-url pattern="/api/isLogin" access="permitAll"/>
+
+        <!--<access-denied-handler error-page="/login.html" />-->
+        <!--login-page="/login.html"-->
+        <form-login login-processing-url="/api/j_spring_security_check"
+                    default-target-url="/index.html"
+                    username-parameter="username"
+                    password-parameter="password"
+                    />
+
+    </http>
+
+
+    <!-- PreAuthentication manager. -->
+
+
+    <!--<bean id="preauthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">-->
+        <!--<property name="preAuthenticatedUserDetailsService">-->
+            <!--<bean id="userDetailsServiceWrapper"  class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">-->
+                <!--<property name="userDetailsService" ref="tokenUserDetailsService"/>-->
+            <!--</bean>-->
+        <!--</property>-->
+        <!--<property name="userDetailsChecker">-->
+            <!--<bean id="tokenUserDetailsChecker" class="com.will.security.token.TokenUserDetailsChecker" />-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean:authentication-manager id="preAuthenticationManager">-->
+        <!--<authentication-provider ref="preauthAuthProvider" />-->
+    <!--</bean:authentication-manager>-->
+    <beans:bean id="passwordEncoder"
+            class="org.springframework.security.crypto.password.NoOpPasswordEncoder" factory-method="getInstance"></beans:bean>
+
+      <user-service id="userService" >
+        <user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+        <user name="user" password="user" authorities="ROLE_BAIDU"/>
+    </user-service>
+    <!-- 认证管理器-->
+    <authentication-manager>
+
+        <authentication-provider user-service-ref="userService"/>
+    </authentication-manager>
+</beans:beans>

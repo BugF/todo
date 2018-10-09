@@ -25,6 +25,10 @@ public class TaskService {
         taskDao.insert(obj);
     }
     @Transactional
+    public void setOver(Task obj){
+        taskDao.setOver(obj);
+    }
+    @Transactional
     public Task create(Task obj){
         obj.setId("TASK_"+Util.buildID());
         obj.setBeOver(false);
