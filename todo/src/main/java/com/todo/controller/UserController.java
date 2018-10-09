@@ -38,7 +38,7 @@ public class UserController {
         Map<String,Object> obj=new HashMap<>();
 
         userService.add();
-        return "/index.jsp";
+        return null;
     }
     @RequestMapping(value="user/isLogin" ,method = RequestMethod.GET)
     public @ResponseBody Map isLogin(){
@@ -95,7 +95,9 @@ public class UserController {
             e.printStackTrace();
             return "redirect:/invalidTocken.html";
         }
-        return "redirect:/mobileLogin.html?tocken="+tocken+"&openid="+map.get("openid");
+        request.setAttribute("openid",obj.get("openid"));
+        request.setAttribute("tocken",tocken);
+        return "/mobileLogin.jsp";
     }
     @RequestMapping(value="/todo/login" ,method = RequestMethod.POST)
     public  @ResponseBody Map phonelogin(@RequestBody LoginTocken m){

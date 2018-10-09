@@ -4,7 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:websocket="http://www.springframework.org/schema/websocket"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- <mvc:default-servlet-handler/>-->
 
     <websocket:handlers>
@@ -24,34 +25,56 @@
 
     <mvc:annotation-driven/>
 
+    <bean id="configurer2" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" >
+            <array>
+                <value>classpath:jdbc.properties</value>
+            </array>
+        </property>
+    </bean>
+
     <bean id="configurer" class="com.todo.util.ConfigUtil">
         <property name="locations"> <!-- PropertyPlaceholderConfigurer类中有个locations属性，接收的是一个数组，即我们可以在下面配好多个properties文件 -->
             <array>
               <!--  <value>file:G:\todo_conf\server.properties</value>-->
                 <value>classpath:server.properties</value>
+                <value>classpath:jdbc.properties</value>
             </array>
         </property>
     </bean>
 
-    <!-- 完成请求和注解POJO的映射 -->
 
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName">
-            <value>com.mysql.jdbc.Driver</value>
-        </property>
-        <property name="url">
-            <value>jdbc:mysql://localhost:3306/todo?useUnicode=true&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;useSSL=false
-            </value>
-        </property>
-        <property name="username">
-            <value>root</value>
-        </property>
-        <property name="password">
-            <!--<value>;Zi;)r3bq(ss,;ds</value>-->
-            <value>passw0rd</value>
-        </property>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db_driverClassName}" />
+        <property name="url" value="${db_url}" />
+        <property name="username" value="${db_username}" />
+        <property name="password" value="${db_password}" />
+        <property name="initialSize" value="10" />
+        <property name="maxTotal" value="100" />
+        <property name="maxIdle" value="100" />
+        <property name="maxWaitMillis" value="-1" />
     </bean>
+
+        <!-- 完成请求和注解POJO的映射 -->
+
+    <!--<bean id="dataSource"-->
+          <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName">-->
+            <!--<value>com.mysql.jdbc.Driver</value>-->
+        <!--</property>-->
+        <!--<property name="url">-->
+            <!--<value>jdbc:mysql://localhost:3306/todo?useUnicode=true&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8&amp;useSSL=false-->
+            <!--</value>-->
+        <!--</property>-->
+        <!--<property name="username">-->
+            <!--<value>root</value>-->
+        <!--</property>-->
+        <!--<property name="password">-->
+            <!--<value>;Zi;)r3bq(ss,;ds</value>-->
+            <!--&lt;!&ndash;<value>passw0rd</value>&ndash;&gt;-->
+        <!--</property>-->
+    <!--</bean>-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
 
@@ -63,8 +86,10 @@
         <property name="basePackage" value="com.todo.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
-
-
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!--<tx:jta-transaction-manager />-->
+    <tx:annotation-driven transaction-manager="transactionManager"  proxy-target-class = "true" />
 
 </beans>
