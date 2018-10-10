@@ -32,7 +32,6 @@
         <result property="createTime" column="create_time"/>
         <result property="allTaskCount" column="all_task_count"/>
         <result property="overTaskCount" column="over_task_count"/>
-
     </resultMap>
 
     <select id="listAll" parameterType="String" resultMap="listResultMap">

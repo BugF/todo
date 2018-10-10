@@ -17,8 +17,8 @@
                     defered.reject(result);
                 });
                 return defered.promise;
-            },getUserLoginInfo: function (obj) {
-                var url = "api/user/getUserLoginInfo";
+            },register: function (obj) {
+                var url = "api/user/register";
                 var defered = $q.defer();
                 $http.post(url, obj)
                     .then(function (result) {  //正确请求成功时处理

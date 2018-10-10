@@ -41,7 +41,6 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function(){
-
         var websocket = null;
         websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket");
         websocket.onopen = onOpen;
@@ -54,18 +53,6 @@
         }
 
         function onMessage(evt) {
-//             var obj=JSON.parse(evt.data)
-//             console.info(JSON.stringify(evt.data));
-//             if(obj.type=='onLogin'){
-//                 new QRCode(document.getElementById("QEM"),
-//                     "http://"+document.location.host+"/todo/api/todo/login?tocken="+obj.tocken);
-//             }else{
-//                 console.info("ooooo");
-//                 $scope.userName=obj.account;
-//                 $scope.message=evt.data;
-//                 alert($scope.userName)
-//             }
-
         }
         function onError(openEvt) {
             console.info(JSON.stringify(openEvt));
@@ -76,18 +63,11 @@
 
         jQuery('#canLogin').click(
             function () {
-                alert("dj")
-//                 var datas=GetRequest();
                 var as={
                     tocken:'<%=tocken%>',
                     openid:'<%=openid%>',
                     type:'canLogin'
                 }
-//                 websocket.send(as);
-//                 $.post("api/todo/login",JSON.stringify(as),
-//                     function(data,status){
-//                         alert("数据: \n" + data + "\n状态: " + status);
-//                     });
                 jQuery.ajax({
                     //提交数据的类型 POST GET
                     type:"POST",
@@ -104,33 +84,18 @@
                     //成功返回之后调用的函数
                     success:function(data){
                         alert(JSON.stringify(data));
-                        //  $("#msg").html(decodeURI(data));
                     }   ,
                     //调用执行后调用的函数
                     complete: function(XMLHttpRequest, textStatus){
-//                         alert(XMLHttpRequest.responseText);
-//                         alert(textStatus);
-                        //HideLoading();
                     },
                     //调用出错执行的函数
                     error: function(){
-                        //请求出错处理
                     }
                 });
 
             }
         )
-//         $scope.doSend=function() {
-//             websocket.send($scope.message);//调用后台handleTextMessage方法
-//         };
-//         $scope.login=function() {
-//             var a={data:"login"}
-//             websocket.send(a);//调用后台handleTextMessage方法
-//         };
-//         window.close=function()
-//         {
-//             websocket.onclose();
-//         }
+
 
     });
 

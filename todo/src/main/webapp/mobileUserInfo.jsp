@@ -17,7 +17,7 @@
     <div class="column">
         <div class="ui form">
             <div class="field">
-                <label>帐号</label>
+                <label>帐号:<%=request.getAttribute("openid")%></label>
                 <div class="ui left icon input">
                     <input type="text" ng-model="username" name="username" placeholder="Username">
                     <i class="user icon"></i>

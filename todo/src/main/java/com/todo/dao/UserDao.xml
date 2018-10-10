@@ -3,13 +3,35 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todo.dao.UserDao">
 
+    <resultMap id="listResultMap" type="com.todo.entity.User">
+        <id property="account" column="account" />
+        <result property="name" column="name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="wxOpenId" column="wx_open_id"/>
+        <result property="pasw" column="pasw"/>
+    </resultMap>
+
     <insert id="add" parameterType="com.todo.entity.User">
         INSERT INTO td_user (account,pasw,name) VALUES (#{account},#{pasw},#{name})
      </insert>
-    <!--<update id="updateUser" parameterType="com.springMyBatis.system.model.User">
-         UPDATE user SET password=#{password} WHERE id=#{id}
-     </update>
-    <delete id="deleteUser" parameterType="int">
-         DELETE FROM user WHERE id=#{id}
-     </delete>-->
+    <update id="bingWxOpenId" parameterType="com.todo.entity.User">
+        UPDATE td_user set wx_open_id=#{wxOpenId} WHERE account=#{account} and pasw=#{pasw}
+    </update>
+    <insert id="registerWithWxOpenid" parameterType="com.todo.entity.User">
+        INSERT INTO td_user (account,pasw,name,create_time,wx_open_id)
+        VALUES (#{account},#{pasw},#{name},#{createTime},#{wxOpenId})
+    </insert>
+    <select id="accountIsBind" resultType="java.lang.Integer" parameterType="String">
+        select COUNT(*) from td_user where account=#{account}
+    </select>
+    <select id="openidIsBind" resultType="java.lang.Integer" parameterType="String">
+        select COUNT(*) from td_user where wx_open_id=#{wxOpenId}
+    </select>
+    <select id="getByOpenId" resultMap="listResultMap" parameterType="String">
+        select * from td_user where wx_open_id=#{openId}
+    </select>
+    <select id="getByAccount" resultMap="listResultMap" parameterType="String">
+        select * from td_user where account=#{account}
+    </select>
+
 </mapper>

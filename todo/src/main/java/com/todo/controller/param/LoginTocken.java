@@ -5,7 +5,16 @@ package com.todo.controller.param;
  */
 public class LoginTocken {
     private String tocken;
+    private String openid;
     private String type;
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
 
     public String getTocken() {
         return tocken;

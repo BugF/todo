@@ -2,15 +2,16 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/security
-http://www.springframework.org/schema/security/spring-security.xsd">
+http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!--suppress UnparsedCustomBeanInspection -->
+
     <http auto-config="true">
         <csrf disabled="true"/>
         <http-basic/>
-
         <intercept-url pattern="/index.html" access="permitAll" />
         <intercept-url pattern="/api/**" access="permitAll"/>
         <!--<intercept-url pattern="/api/websocket" access="permitAll"/>-->
@@ -25,7 +26,6 @@ http://www.springframework.org/schema/security/spring-security.xsd">
                     />
 
     </http>
-
 
     <!-- PreAuthentication manager. -->
 
@@ -51,8 +51,21 @@ http://www.springframework.org/schema/security/spring-security.xsd">
         <user name="user" password="user" authorities="ROLE_BAIDU"/>
     </user-service>
     <!-- 认证管理器-->
-    <authentication-manager>
-
-        <authentication-provider user-service-ref="userService"/>
+    <beans:bean id="loginUser" class="com.todo.security.LoginUser"/>
+    <beans:bean id="userDetialServiceImp"
+                class="com.todo.security.UserDetialServiceImp">
+        <beans:property name="loginUser" ref="loginUser"/>
+    </beans:bean>
+    <beans:bean id="myPaswEncoder" class="com.todo.security.MyPaswEncoder"/>
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetialServiceImp">
+            <password-encoder ref="myPaswEncoder"/>
+        </authentication-provider>
+        <!-- <security:authentication-provider user-service-ref="userDetialServiceImp"/>-->
     </authentication-manager>
+    <!--<beans:bean id="myFilter" class="com.todo.security.MyFilter">-->
+        <!--<beans:property name="authenticationManager" ref="authenticationManager"/>-->
+    <!--</beans:bean>-->
+
+
 </beans:beans>

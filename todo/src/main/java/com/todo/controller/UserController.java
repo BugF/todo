@@ -2,6 +2,7 @@ package com.todo.controller;
 
 import com.google.gson.Gson;
 import com.todo.controller.param.LoginTocken;
+import com.todo.entity.User;
 import com.todo.service.UserService;
 import com.todo.socket.MyWebSocket;
 import com.todo.util.ConfigUtil;
@@ -33,12 +34,17 @@ public class UserController {
         return "/index.jsp";
     }
 
-    @RequestMapping(value="/user/register" ,method = RequestMethod.GET)
-    public @ResponseBody Map register(){
-        Map<String,Object> obj=new HashMap<>();
-
-        userService.add();
-        return null;
+    @RequestMapping(value="/user/register" ,method = RequestMethod.POST)
+    public @ResponseBody Map register(@RequestBody User user){
+        Map<String,Object> map=new HashMap<>();
+        try {
+            userService.registerWithWxOpenid(user);
+            map.put("status","true");
+        } catch (Exception e) {
+            map.put("status","false");
+            map.put("message",e.getMessage());
+        }
+        return map;
     }
     @RequestMapping(value="user/isLogin" ,method = RequestMethod.GET)
     public @ResponseBody Map isLogin(){
@@ -135,8 +141,6 @@ public class UserController {
     @RequestMapping(value="/user/bindWX" ,method = RequestMethod.GET)
     public String bindWX(HttpServletRequest request){
         String code=request.getParameter("code");
-        String state=request.getParameter("state");
-
         String data=HttpUtil.doGet("https://api.weixin.qq.com/sns/oauth2/access_token?" +
                 "appid=" +ConfigUtil.getContextProperty("APPID")+"" +
                 "&secret="+ ConfigUtil.getContextProperty("APPSECRET")+"" +
@@ -147,10 +151,17 @@ public class UserController {
         if(map.containsKey("errcode")){
             return "redirect:/invalidTocken.html";
         }
-        String tocken=state.indexOf("#")>0?state.substring(0,state.indexOf("#")):state;
+        System.out.println("*************map="+map.get("openid"));
         request.setAttribute("openid",map.get("openid"));
-        request.setAttribute("tocken",tocken);
-        return "forward:/mobileLogin.jsp";
+        if(!userService.wxIsBind(map.get("openid").toString())){
+            System.out.println("isBind:= false");
+            return "/mobileRegister.jsp";
+        }
+        else{
+            System.out.println("isBind:= true");
+            return "/mobileUserInfo.jsp";
+
+        }
     }
     @RequestMapping(value="/todo/login" ,method = RequestMethod.POST)
     public  @ResponseBody Map phonelogin(@RequestBody LoginTocken m){

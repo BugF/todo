@@ -9,7 +9,16 @@ public class User {
     private String account;
     private String name;
     private String pasw;
-    private Timestamp create_time;
+    private Timestamp createTime;
+    private String wxOpenId;
+
+    public String getWxOpenId() {
+        return wxOpenId;
+    }
+
+    public void setWxOpenId(String wxOpenId) {
+        this.wxOpenId = wxOpenId;
+    }
 
     public String getAccount() {
         return account;
@@ -35,11 +44,11 @@ public class User {
         this.pasw = pasw;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 }
