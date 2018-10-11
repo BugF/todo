@@ -10,15 +10,23 @@ http://www.springframework.org/schema/security/spring-security.xsd http://www.sp
     <!--suppress UnparsedCustomBeanInspection -->
 
     <http auto-config="true">
+        <headers disabled="true"/>
         <csrf disabled="true"/>
-        <http-basic/>
+        <!--<http-basic/>-->
         <intercept-url pattern="/index.html" access="permitAll" />
-        <intercept-url pattern="/api/**" access="permitAll"/>
-        <!--<intercept-url pattern="/api/websocket" access="permitAll"/>-->
+        <intercept-url pattern="/invalidTocken.html" access="permitAll" />
+        <intercept-url pattern="/login.html" access="permitAll" />
+        <intercept-url pattern="/mobileLogin.html" access="permitAll" />
+        <intercept-url pattern="/mobileLogin.jsp" access="permitAll" />
+        <intercept-url pattern="/mobileRegister.html" access="permitAll" />
+        <intercept-url pattern="/mobileRegister.jsp" access="permitAll" />
+        <intercept-url pattern="/mobileUserInfo.jsp" access="permitAll" />
+        <intercept-url pattern="/" access="permitAll" />
         <intercept-url pattern="/api/isLogin" access="permitAll"/>
+        <intercept-url pattern="/api/user/**" access="permitAll"/>
+        <intercept-url pattern="/api/websocket/**" access="permitAll"/>
+        <intercept-url pattern="/api/**" access="hasRole('ROLE_ADMIN')"/>
 
-        <!--<access-denied-handler error-page="/login.html" />-->
-        <!--login-page="/login.html"-->
         <form-login login-processing-url="/api/j_spring_security_check"
                     default-target-url="/index.html"
                     username-parameter="username"
@@ -27,22 +35,7 @@ http://www.springframework.org/schema/security/spring-security.xsd http://www.sp
 
     </http>
 
-    <!-- PreAuthentication manager. -->
 
-
-    <!--<bean id="preauthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">-->
-        <!--<property name="preAuthenticatedUserDetailsService">-->
-            <!--<bean id="userDetailsServiceWrapper"  class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">-->
-                <!--<property name="userDetailsService" ref="tokenUserDetailsService"/>-->
-            <!--</bean>-->
-        <!--</property>-->
-        <!--<property name="userDetailsChecker">-->
-            <!--<bean id="tokenUserDetailsChecker" class="com.will.security.token.TokenUserDetailsChecker" />-->
-        <!--</property>-->
-    <!--</bean>-->
-    <!--<bean:authentication-manager id="preAuthenticationManager">-->
-        <!--<authentication-provider ref="preauthAuthProvider" />-->
-    <!--</bean:authentication-manager>-->
     <beans:bean id="passwordEncoder"
             class="org.springframework.security.crypto.password.NoOpPasswordEncoder" factory-method="getInstance"></beans:bean>
 
@@ -57,15 +50,12 @@ http://www.springframework.org/schema/security/spring-security.xsd http://www.sp
         <beans:property name="loginUser" ref="loginUser"/>
     </beans:bean>
     <beans:bean id="myPaswEncoder" class="com.todo.security.MyPaswEncoder"/>
-    <authentication-manager alias="authenticationManager">
+    <authentication-manager>
         <authentication-provider user-service-ref="userDetialServiceImp">
-            <password-encoder ref="myPaswEncoder"/>
+            <password-encoder ref="myPaswEncoder"></password-encoder>
         </authentication-provider>
-        <!-- <security:authentication-provider user-service-ref="userDetialServiceImp"/>-->
     </authentication-manager>
-    <!--<beans:bean id="myFilter" class="com.todo.security.MyFilter">-->
-        <!--<beans:property name="authenticationManager" ref="authenticationManager"/>-->
-    <!--</beans:bean>-->
+
 
 
 </beans:beans>

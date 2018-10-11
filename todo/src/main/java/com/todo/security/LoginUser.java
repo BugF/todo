@@ -2,50 +2,50 @@ package com.todo.security;
 
 import com.todo.dao.UserDao;
 import com.todo.entity.User;
-import com.todo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class LoginUser implements UserDetails {
 
     @Autowired
-    private UserService userService;
-    @Autowired
     private UserDao userDao;
-    private String pasw;
+    private String password;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private String userName;
 
     public LoginUser() {
     }
 
-    public LoginUser(String pasw, String userName) {
-        this.pasw = pasw;
+    public LoginUser(String pasw, String userName, Collection<GrantedAuthority> authorities) {
+        this.password = pasw;
         this.userName = userName;
-       // this.authorities=
+        this.authorities=authorities;
     }
     public LoginUser getUser(String userName){
-        User user= userService.getByAccount(userName).get(0);
-        User user2= userDao.getByAccount(userName).get(0);
-        this.pasw=user.getPasw();
-        this.userName=userName;
-        return this;
+        System.out.println(userDao==null);
+        List<User> users= userDao.getByAccount(userName);
+        User user=users.get(0);
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        if(userName.equalsIgnoreCase("admin"))
+        authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return new LoginUser(user.getPasw(),userName,authorities);
     }
 
     private Collection<GrantedAuthority> authorities;
 
     public void setAuthorities(Collection<GrantedAuthority> authorities) {
         this.authorities = authorities;
-    }
-
-    public String getPasw() {
-        return pasw;
-    }
-
-    public void setPasw(String pasw) {
-        this.pasw = pasw;
     }
 
     public String getUserName() {
@@ -64,7 +64,7 @@ public class LoginUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return pasw;
+        return password;
     }
 
     @Override
@@ -74,21 +74,21 @@ public class LoginUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

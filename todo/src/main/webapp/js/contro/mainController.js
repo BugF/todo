@@ -67,7 +67,9 @@
                                 websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket");
 
                             }else{
+
                                 websocket = new SockJS("http://"+document.location.host+"/todo/api/websocket?account="+obj.account);
+                                listAllLIST();
                             }
                             websocket.onopen = onOpen;
                             websocket.onmessage = onMessage;
@@ -100,7 +102,7 @@
                 $scope.goToList=function(id){
                     goToList(id);
                 }
-                listAllLIST();
+
                 $scope._LISTS=[];
                 function listAllLIST() {
                     $scope._LISTS=[];

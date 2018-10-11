@@ -7,48 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf7eb915-adba-4199-8bcb-a51f1ab8cee9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/MyAuthenticationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/MyFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/todo_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/todo_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/controller/param/LoginTocken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/controller/param/LoginTocken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/dao/ListDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/dao/ListDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/dao/UserDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/dao/WX_UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/dao/WX_UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/dao/WX_UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/dao/WX_UserDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/entity/WX_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/entity/WX_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/dao/ListDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/dao/ListDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/dao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/dao/TaskDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/LoginUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/PreRequestHeaderAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/PreRequestHeaderAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/ServiceUnauthorizedEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/ServiceUnauthorizedEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/TokenUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/TokenUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/MyAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/MyAuthenticationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/MyFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/MyFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/util/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/util/wx/MenuUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/util/wx/MenuUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/project.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/project.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/invalidTocken.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/invalidTocken.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/contro/projectController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/contro/projectController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/userService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/mobileLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mobileLogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/mobileLogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mobileLogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/mobileRegister.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mobileRegister.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/todo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/contro/mainController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/contro/mainController.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,25 +39,25 @@
     <session id="-620516876">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.11" value="3" />
-          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.14" value="5" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="3" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="10" />
+          <entry key="class" value="12" />
           <entry key="css" value="1" />
           <entry key="html" value="26" />
-          <entry key="java" value="92" />
-          <entry key="js" value="33" />
+          <entry key="java" value="98" />
+          <entry key="js" value="35" />
           <entry key="jsp" value="2" />
           <entry key="properties" value="8" />
           <entry key="xml" value="39" />
@@ -93,12 +65,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="10" />
+          <entry key="CLASS" value="12" />
           <entry key="CSS" value="1" />
           <entry key="HTML" value="26" />
-          <entry key="JAVA" value="92" />
+          <entry key="JAVA" value="98" />
           <entry key="JSP" value="2" />
-          <entry key="JavaScript" value="33" />
+          <entry key="JavaScript" value="35" />
           <entry key="Properties" value="8" />
           <entry key="XML" value="39" />
         </counts>
@@ -106,20 +78,20 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="2787" />
-          <entry key="java" value="2064" />
-          <entry key="js" value="3784" />
+          <entry key="java" value="2367" />
+          <entry key="js" value="3787" />
           <entry key="jsp" value="89" />
-          <entry key="xml" value="1502" />
+          <entry key="xml" value="1556" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="2787" />
-          <entry key="JAVA" value="2064" />
+          <entry key="JAVA" value="2367" />
           <entry key="JSP" value="89" />
-          <entry key="JavaScript" value="3784" />
+          <entry key="JavaScript" value="3787" />
           <entry key="SQL" value="17" />
-          <entry key="XML" value="1485" />
+          <entry key="XML" value="1539" />
         </counts>
       </usages-collector>
     </session>
@@ -129,8 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="238">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="e#861#862#0" expanded="true" />
                 <element signature="e#911#912#0" expanded="true" />
@@ -142,17 +114,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/util/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="8" />
+            <state relative-caret-position="165">
+              <caret line="64" column="71" selection-start-line="64" selection-start-column="71" selection-end-line="64" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#567#568#0" expanded="true" />
-                <element signature="e#599#600#0" expanded="true" />
-                <element signature="e#654#655#0" expanded="true" />
-                <element signature="e#696#697#0" expanded="true" />
+                <element signature="e#1775#1776#0" expanded="true" />
+                <element signature="e#1856#1857#0" expanded="true" />
+                <element signature="e#1809#1810#0" expanded="true" />
+                <element signature="e#1868#1869#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://G:/jdk/src.zip!/com/sun/org/apache/xpath/internal/operations/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -160,41 +150,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1859">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="184">
+              <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/contro/mainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="28" column="72" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="72" />
+            <state relative-caret-position="393">
+              <caret line="74" selection-start-line="74" selection-end-line="75" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/service/menuServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="294">
+              <caret line="118" column="8" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#2233#2256#0" expanded="true" />
-                <element signature="e#2293#2304#0" expanded="true" />
-                <element signature="e#2346#2362#0" expanded="true" />
-                <element signature="e#2404#2420#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#396#397#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.0.2.RELEASE/spring-security-core-5.0.2.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state relative-caret-position="71">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -202,35 +200,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/LoginUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/UserRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.4.RELEASE/spring-data-jpa-2.0.4.RELEASE.jar!/org/springframework/data/jpa/repository/JpaRepository.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
-              <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+              <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+              <folding>
+                <element signature="e#599#600#0" expanded="true" />
+                <element signature="e#639#640#0" expanded="true" />
+                <element signature="e#945#963#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -251,11 +227,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addList</find>
-      <find>oldTitle</find>
-      <find>$scope.menuServer.listMenuTitleArr.splice</find>
-      <find>createTask</find>
-      <find>listResultMap</find>
       <find>delete</find>
       <find>listTasks</find>
       <find>over</find>
@@ -281,6 +252,11 @@
       <find>jdbc</find>
       <find>contextConfigLocation</find>
       <find>springSecurityFilterChain</find>
+      <find>printHexString</find>
+      <find>hexStringToBytes</find>
+      <find>String</find>
+      <find>listAll</find>
+      <find>getListMenu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -290,8 +266,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/html/project.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/drivate/addTodoWindow.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/drivate/add.todo.window.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/contro/todayController.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/contro/allController.js" />
@@ -321,7 +295,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/js/service/userService.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/todo/util/wx/HttpUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/contro/mainController.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/mobileLogin.html" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/todo/util/wx/WXTocken.java" />
@@ -330,17 +303,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/todo/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/mobileLogin.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/todo/security/MyAuthenticationManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java" />
         <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/todo/security/MyFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/todo/security/LoginUser.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/todo/security/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/todo/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/todo/util/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/todo/security/LoginUser.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/contro/mainController.js" />
       </list>
     </option>
   </component>
@@ -422,6 +398,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -520,22 +499,53 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="todo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="todo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="todo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="todo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="contro" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="todo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="todo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="todo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="todo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539188400985" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539269903007" />
     <property name="last_opened_file_path" value="G:/Git/bin/git.exe" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Global Libraries" />
@@ -637,6 +647,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyPaswEncoder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.todo.security.MyPaswEncoder" />
+      <module name="todo" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todo.security.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.todo.controller.UserController" />
       <module name="todo" />
@@ -651,13 +675,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="XmlUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.todo.util.wx.XmlUtil" />
+    <configuration name="Util" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.todo.util.Util" />
       <module name="todo" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.todo.util.wx.*" />
+          <option name="PATTERN" value="com.todo.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -667,23 +691,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All Features in: WEB-INF" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="3" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
-      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="todo" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm3SMFormatter" />
-      <option name="SUGGESTED_NAME" value="All Features in: WEB-INF" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cucumber.api.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -821,19 +828,19 @@
     </configuration>
     <list>
       <item itemvalue="Tomcat Server.Unnamed" />
-      <item itemvalue="Application.XmlUtil" />
-      <item itemvalue="Cucumber java.All Features in: WEB-INF" />
       <item itemvalue="Application.UserController" />
       <item itemvalue="Application.HttpUtil" />
       <item itemvalue="Application.MenuUtil" />
+      <item itemvalue="Application.MyPaswEncoder" />
+      <item itemvalue="Application.Util" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Util" />
+        <item itemvalue="Application.MyPaswEncoder" />
         <item itemvalue="Application.MenuUtil" />
         <item itemvalue="Application.HttpUtil" />
         <item itemvalue="Application.UserController" />
-        <item itemvalue="Cucumber java.All Features in: WEB-INF" />
-        <item itemvalue="Application.XmlUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -889,6 +896,7 @@
       <workItem from="1539086662940" duration="2837000" />
       <workItem from="1539089771664" duration="12158000" />
       <workItem from="1539173412434" duration="14691000" />
+      <workItem from="1539259696956" duration="6483000" />
     </task>
     <servers />
   </component>
@@ -898,12 +906,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245570000" />
+    <option name="totallyTimeSpent" value="252053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="885" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26799485" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27120823" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -914,8 +922,8 @@
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30892143" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.6964048" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.82995737" weight="0.48601863" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3981358" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.82995737" weight="0.113182425" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -986,15 +994,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/todo/service/UserService.java</url>
-          <line>34</line>
+          <line>35</line>
           <properties />
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1004,20 +1006,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/dao/TaskDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.5/mybatis-3.4.5.jar!/org/apache/ibatis/binding/MapperProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/dao/ListDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
@@ -1029,13 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1650">
           <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.0.2.RELEASE/spring-security-core-5.0.2.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetails.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1081,13 +1062,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-66">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/contro/mainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1551">
-          <caret line="47" column="53" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -1189,23 +1163,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/util/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="12" column="59" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="14" column="96" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/dao/UserDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -1231,23 +1188,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.0.2.RELEASE/spring-security-core-5.0.2.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1480">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/MyAuthenticationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="13" column="69" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1279,13 +1219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/MyFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -1298,30 +1231,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#911#912#0" expanded="true" />
-            <element signature="e#982#983#0" expanded="true" />
-            <element signature="e#1034#1035#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.4.RELEASE/spring-data-jpa-2.0.4.RELEASE.jar!/org/springframework/data/jpa/repository/JpaRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="924">
+          <caret line="28" column="72" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -1332,58 +1245,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/LoginUser.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.4.RELEASE/spring-data-jpa-2.0.4.RELEASE.jar!/org/springframework/data/jpa/repository/JpaRepository.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="231">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="28" column="72" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="72" />
+        <state relative-caret-position="2442">
+          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/MyAuthenticationManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1859">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="8" />
+        <state relative-caret-position="235">
+          <caret line="17" column="72" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        <state relative-caret-position="470">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="1623">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
           <folding>
-            <element signature="e#2233#2256#0" expanded="true" />
-            <element signature="e#2293#2304#0" expanded="true" />
-            <element signature="e#2346#2362#0" expanded="true" />
-            <element signature="e#2404#2420#0" expanded="true" />
+            <element signature="e#2290#2313#0" expanded="true" />
+            <element signature="e#2352#2363#0" expanded="true" />
+            <element signature="e#2407#2423#0" expanded="true" />
+            <element signature="e#2467#2483#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.0.2.RELEASE/spring-security-core-5.0.2.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetails.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/util/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="64" column="71" selection-start-line="64" selection-start-column="71" selection-end-line="64" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+            <element signature="e#1856#1857#0" expanded="true" />
+            <element signature="e#1809#1810#0" expanded="true" />
+            <element signature="e#1868#1869#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/jdk/src.zip!/com/sun/org/apache/xpath/internal/operations/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.0.2.RELEASE/spring-security-core-5.0.2.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/MyPaswEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/UserDetialServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/todo/security/LoginUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+          <folding>
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#945#963#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/contro/mainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="74" selection-start-line="74" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/service/menuServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="118" column="8" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
         </state>
       </provider>
     </entry>

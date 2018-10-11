@@ -7,49 +7,55 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 <!-- <context:component-scan base-package="com.todo.controller"/>-->
-   <websocket:handlers>
-      <websocket:mapping path="/websocket" handler="mywebsocket"/>
-      <websocket:handshake-interceptors>
-         <bean class="com.todo.socket.MyHandshakeInterceptor"/>
-      </websocket:handshake-interceptors>
-      <websocket:sockjs/>
-   </websocket:handlers>
-   <bean id="mywebsocket" class="com.todo.socket.MyWebSocket"></bean>
-   <bean id="configurer2" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-      <property name="locations" >
-         <array>
-            <value>classpath:jdbc.properties</value>
-         </array>
-      </property>
-   </bean>
+    <websocket:handlers>
+        <websocket:mapping path="/websocket" handler="mywebsocket"/>
+        <websocket:handshake-interceptors>
+            <bean class="com.todo.socket.MyHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+        <websocket:sockjs/>
+    </websocket:handlers>
+    <bean id="mywebsocket" class="com.todo.socket.MyWebSocket"></bean>
+    <bean id="configurer2" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" >
+            <array>
+                <value>classpath:jdbc.properties</value>
+            </array>
+        </property>
+    </bean>
 
-   <bean id="configurer" class="com.todo.util.ConfigUtil">
-      <property name="locations"> <!-- PropertyPlaceholderConfigurer类中有个locations属性，接收的是一个数组，即我们可以在下面配好多个properties文件 -->
-         <array>
-            <!--  <value>file:G:\todo_conf\server.properties</value>-->
-            <value>classpath:server.properties</value>
-            <value>classpath:jdbc.properties</value>
-         </array>
-      </property>
-   </bean>
-   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-      <property name="driverClassName" value="${db_driverClassName}" />
-      <property name="url" value="${db_url}" />
-      <property name="username" value="${db_username}" />
-      <property name="password" value="${db_password}" />
-      <property name="initialSize" value="10" />
-      <property name="maxTotal" value="100" />
-      <property name="maxIdle" value="100" />
-      <property name="maxWaitMillis" value="-1" />
-   </bean>
+    <bean id="configurer" class="com.todo.util.ConfigUtil">
+        <property name="locations"> <!-- PropertyPlaceholderConfigurer类中有个locations属性，接收的是一个数组，即我们可以在下面配好多个properties文件 -->
+            <array>
+                <!--  <value>file:G:\todo_conf\server.properties</value>-->
+                <value>classpath:server.properties</value>
+                <value>classpath:jdbc.properties</value>
+            </array>
+        </property>
+    </bean>
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db_driverClassName}" />
+        <property name="url" value="${db_url}" />
+        <property name="username" value="${db_username}" />
+        <property name="password" value="${db_password}" />
+        <property name="initialSize" value="10" />
+        <property name="maxTotal" value="100" />
+        <property name="maxIdle" value="100" />
+        <property name="maxWaitMillis" value="-1" />
+    </bean>
 
-   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-      <property name="dataSource" ref="dataSource"/>
-      <property name="mapperLocations" value="classpath:com/todo/dao/*.xml"></property>
-   </bean>
-   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-      <property name="dataSource" ref="dataSource" />
-   </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:com/todo/dao/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <!-- 指定要自动扫描接口的基础包，实现接口 -->
+        <property name="basePackage" value="com.todo.dao"></property>
+    </bean>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
 
    <!--<import resource="spring-servlet.xml"></import>-->
