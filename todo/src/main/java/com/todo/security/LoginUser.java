@@ -31,15 +31,18 @@ public class LoginUser implements UserDetails {
         this.userName = userName;
         this.authorities=authorities;
     }
-    public LoginUser getUser(String userName){
-        System.out.println(userDao==null);
-        List<User> users= userDao.getByAccount(userName);
-        User user=users.get(0);
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        if(userName.equalsIgnoreCase("admin"))
-        authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        return new LoginUser(user.getPasw(),userName,authorities);
+    public LoginUser getUser(String userName) throws Exception {
+        try {
+            List<User> users = userDao.getByAccount(userName);
+            User user = users.get(0);
+            List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            if (userName.equalsIgnoreCase("admin"))
+                authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            return new LoginUser(user.getPasw(), userName, authorities);
+        }catch (Exception e){
+            throw new Exception();
+        }
     }
 
     private Collection<GrantedAuthority> authorities;

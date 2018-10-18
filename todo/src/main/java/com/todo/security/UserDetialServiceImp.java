@@ -22,7 +22,12 @@ public class UserDetialServiceImp implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {
-        UserDetails userDetails=loginUser.getUser(account);
+        UserDetails userDetails= null;
+        try {
+            userDetails = loginUser.getUser(account);
+        } catch (Exception e) {
+            throw  new UsernameNotFoundException("没有此用户");
+        }
         return userDetails;
     }
 

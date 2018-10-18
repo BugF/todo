@@ -10,13 +10,11 @@ import com.todo.util.wx.HttpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -26,12 +24,28 @@ public class UserController {
     @Autowired
     MyWebSocket myWebSocket;
 
-    String userName=null;
+//    String userName=null;
     @RequestMapping(value="/todo/user" ,method = RequestMethod.GET)
     public String addUser(){
 
         userService.add();
         return "/index.jsp";
+    }
+
+    @RequestMapping(value="/login" ,method = RequestMethod.GET)
+    public String login(@RequestParam(value = "error", required = false) String error,
+                        @RequestParam(value = "logout", required = false) String logout,
+                        HttpServletRequest request
+                        ){
+
+        if (error != null) {
+            request.setAttribute("msg","用户名或密码错误");
+        }
+        if (logout != null) {
+            request.setAttribute("msg","退出成功");
+        }
+        return "/login.jsp";
+
     }
 
     @RequestMapping(value="/user/register" ,method = RequestMethod.POST)
@@ -61,7 +75,7 @@ public class UserController {
     @RequestMapping(value="user/getUserLoginInfo" ,method = RequestMethod.GET)
     public @ResponseBody Map getUserLoginInfo(){
         Map<String,Object> obj=new HashMap<>();
-        String userName=SecurityContextHolder.getContext().getAuthentication().getName();
+         String userName=SecurityContextHolder.getContext().getAuthentication().getName();
         if("anonymousUser".equalsIgnoreCase(userName)){
             obj.put("status","true");
         }else{
@@ -75,7 +89,7 @@ public class UserController {
     public  @ResponseBody Map  loginUser(){
         Map<String,Object> obj=new HashMap<>();
         obj.put("status","true");
-        obj.put("account",userName);
+        obj.put("account",SecurityContextHolder.getContext().getAuthentication().getName());
         return obj;
     }
     @RequestMapping(value="/user/login" ,method = RequestMethod.GET)
@@ -167,15 +181,24 @@ public class UserController {
     public  @ResponseBody Map phonelogin(@RequestBody LoginTocken m){
         Map<String,Object> obj=new HashMap<>();
         Map<String,Object> obj2=new HashMap<>();
-        obj.put("type","login-ok");
-        obj.put("account","admin");
-        obj.put("password","admin");
-        obj.put("tocken",m.getTocken());
-        myWebSocket.sendMessage(obj);
-        userName="flx";
-        obj2.put("status","true");
-        obj2.put("data","success");
-        return obj2;
+
+        List<User> us=userService.getByOpenId(m.getOpenid());
+        if(null!=us && us.size()>0){
+            obj.put("type","login-ok");
+            obj.put("account",us.get(0).getAccount());
+            obj.put("password",us.get(0).getPasw());
+            obj.put("tocken",m.getTocken());
+            myWebSocket.sendMessage(obj);
+            obj2.put("status","true");
+            obj2.put("data","success");
+            return obj2;
+        }else {
+            obj2.put("status","false");
+            obj2.put("data","出错");
+            return obj2;
+        }
+
+
 
     }
 

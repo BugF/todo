@@ -21,10 +21,10 @@
                     <i class="ui massive user icon"></i>
                 </div>
                 <div class="content">
-                    <%=openid%>
-                    <%=tocken%>
-                    <%=request.getAttribute("openid")%>
-                    <%=request.getAttribute("tocken")%>
+                    <%--<%=openid%>--%>
+                    <%--<%=tocken%>--%>
+                    <%--<%=request.getAttribute("openid")%>--%>
+                    <%--<%=request.getAttribute("tocken")%>--%>
                     <div class="description">点击下面按钮，允许登录 </div>
                 </div>
                 <div class="extra content">
@@ -63,6 +63,7 @@
 
         jQuery('#canLogin').click(
             function () {
+                alert('asdasd');
                 var as={
                     tocken:'<%=tocken%>',
                     openid:'<%=openid%>',
