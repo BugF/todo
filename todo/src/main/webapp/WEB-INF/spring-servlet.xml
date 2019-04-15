@@ -9,7 +9,9 @@
     <!-- <mvc:default-servlet-handler/>-->
     <import resource="applicationContext.xml"/>
 
-
+    <mvc:cors>
+        <mvc:mapping path="/**"/>
+    </mvc:cors>
     <context:annotation-config/>
     <context:component-scan base-package="com.todo.dao"/>
     <context:component-scan base-package="com.todo.service"/>

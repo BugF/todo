@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todo.dao.BlogDao">
+
+    <!--<insert id="insert" parameterType="com.todo.entity.List">-->
+        <!--INSERT INTO td_task-->
+        <!--(id,title,create_time,note,alarm_time,creator,be_over,be_delete)-->
+        <!--VALUES-->
+        <!--(#{id},#{title},#{createTime},#{note},#{alarmTime},#{creator},#{beOver},#{beDelete} )-->
+    <!--</insert>-->
+    <insert id="create" parameterType="com.todo.entity.Blog">
+        INSERT INTO td_blog
+        (id,create_time,creator,modify_time,publish)
+        VALUES
+        (#{id},#{createTime},#{creator},#{modifyTime},#{publish})
+    </insert>
+    <update id="update" parameterType="com.todo.entity.Blog">
+        update td_blog set
+        modify_time=#{modifyTime}
+        <if test="title!=null">
+          ,title=#{title}
+        </if>
+        <if test="content!=null">
+            ,content=#{content}
+        </if>
+        <if test="publish!=null">
+            ,publish=#{publish}
+        </if>
+         where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.todo.entity.Blog">
+        delete from td_blog where 1=1
+        <if test="id!=null">
+            and id=#{id}
+        </if>
+    </delete>
+    <resultMap id="blogResultMap" type="com.todo.entity.Blog">
+        <id property="id" column="id" />
+        <result property="title" column="title"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="content" column="content"/>
+        <result property="publish" column="publish"/>
+
+    </resultMap>
+
+    <!--<select id="listAll" parameterType="String" resultMap="listResultMap">-->
+        <!--select l.id as id ,count(t.id) as all_task_count ,count(case WHEN t.be_over=1 THEN 1 ELSE NULL END) as over_task_count ,l.create_time as create_time,l.title as title from td_list as l left join td_task as t on(t.set_id=l.id and t.be_delete=false) group by l.id order by create_time-->
+    <!--</select>-->
+    <select id="getById" parameterType="string" resultMap="blogResultMap">
+        SELECT * from td_blog where id = #{id}
+    </select>
+    <select id="listAll" resultMap="blogResultMap">
+        SELECT * from td_blog
+    </select>
+    <select id="listPublish" parameterType="String" resultMap="blogResultMap">
+        SELECT * from td_blog where publish=true and creator=#{creator}
+    </select>
+    <select id="listDraft" parameterType="String" resultMap="blogResultMap">
+        SELECT * from td_blog where publish=false and creator=#{creator}
+    </select>
+
+</mapper>

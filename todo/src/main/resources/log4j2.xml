@@ -70,5 +70,14 @@ private static final Logger logger = LogManager.getLogger(实际类名.class.get
             <AppenderRef ref="Console" />
         </Root>
     </loggers>
+    <Loggers>
+        <!-- 开启mybatis的sql日志, name和mybatis-config.xml的logPrefix一致 . 级别为debug或trace-->
+        <AsyncLogger name="com.todo.dao" level="Debug" additivity="true"/>
+
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
 </configuration>
 
